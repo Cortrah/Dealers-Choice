@@ -1,6 +1,6 @@
 # Dealers Choice
 
-A poker game based on 'Frame' by Reza Akhavan, using Vue as a front end library.
+A poker game based on ['Frame'](https://github.com/jedireza/frame) by [Reza Akhavan](https://github.com/jedireza), using [Vue](https://vuejs.org/guide/) as a front end library.
 
 ## Frame Info
 
