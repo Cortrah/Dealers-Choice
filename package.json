@@ -1,7 +1,7 @@
 {
-  "name": "frame",
-  "version": "8.0.0",
-  "description": "A user system API for Node.js",
+  "name": "dealers-choice",
+  "version": "1.0.0",
+  "description": "A Dealers Choice Poker Engine",
   "main": "index.js",
   "scripts": {
     "setup": "./setup.js",
@@ -9,10 +9,24 @@
     "test": "lab -c -L",
     "test-cover": "lab -c -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html"
   },
-  "author": "Reza Akhavan <jedireza@gmail.com> (http://reza.akhavan.me/)",
+  "author": "Cortlandt Winters",
   "license": "MIT",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
+  },
+  "keywords": [
+    "poker",
+    "katas",
+    "hapi",
+    "vue",
+    "frame",
+    "agnostech",
+    "ai",
+    "bots"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cortrah/dealers-choice.git"
   },
   "dependencies": {
     "async": "1.x.x",
@@ -30,7 +44,7 @@
     "joi": "8.x.x",
     "lout": "9.x.x",
     "mongodb": "2.x.x",
-    "node-uuid": "1.x.x",
+    "node-uuid": ">=1.4.7",
     "nodemailer": "2.x.x",
     "nodemailer-markdown": "1.x.x",
     "object-assign": "4.x.x",
@@ -44,5 +58,9 @@
     "nodemon": "1.x.x",
     "promptly": "1.x.x",
     "proxyquire": "1.x.x"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Cortrah/dealers-choice/issues"
+  },
+  "homepage": "https://github.com/Cortrah/dealers-choice#readme"
 }
