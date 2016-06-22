@@ -1,0 +1,96 @@
+To start we'll just stub out
+5 dogs
+in 5 card bluff
+no responsiveness no security or admin
+a transition, but a basic one from splash to table
+at the table we'll have 5 dogs
+each with a hand, a name and a stack of 500 bones
+
+one marked as the dealer
+
+
+Use discourse as a clubhouse eventually
+Register a player
+Possibly use github 
+
+The player can play by hand 
+or he or she can register an ip address and rest interface to call for his or her bot that can be written in any language.
+
+We pass them rules in a json spec for the various games and they implement ai bots to play the games
+
+We validate inputs and outputs and referee the games and track results
+
+We can do analasis on the ai's and look for patterns, flaws and strengths of different appoaches.
+
+Admin and hosting features
+================
+A host can enforce that each game is played for a round of deals or freestyle.
+
+A host can schedule a game on a calendar, invite players, manage a clubhouse, assign a banker
+
+A host can choose the games available to a table.
+
+A banker can give  a player chips either during a game or outside of a game and tracks it for them
+
+Other
+================
+Talky voice chat
+
+A Set of Games
+
+Five Card Bluff
+================
+ante values
+betting limits, double the ante, pot or no limit;
+a table with x players each with y stacks
+look at 5 cards
+one round of betting
+a showdown
+dealer rotates
+
+Five Card Draw
+================
+Same but 
+deal 5
+betting round
+draw up to three
+betting round
+
+Five Card Stud
+================
+
+Jacks or Better
+================
+
+Jacks or Better, Trips to win
+================
+
+Seven Card Stud
+================
+
+Seven Card High-Low
+================
+
+Texas Hold-em
+================
+
+Acey Deucy
+================
+
+Black Maraiah
+================
+
+Guts
+================
+
+Man or Mouse
+================
+
+The Wrecking Ball
+================
+
+Wild Cards
+================
+
+Seven Card Pass-em
+================
