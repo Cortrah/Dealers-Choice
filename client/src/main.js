@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App'
+import Home from './Home'
 import Splash from './components/Splash'
 import Tabletop from './components/Tabletop'
 
@@ -11,7 +11,7 @@ let router = new Router()
 
 router.map({
   '/': {
-    component: App
+    component: Home
   },
   '/splash': {
     component: Splash
@@ -21,4 +21,4 @@ router.map({
   }
 })
 
-router.start(App, 'app')
+router.start(Home, 'app')
