@@ -8,7 +8,7 @@
       A simple poker game
     </p>
     <p>
-      go to the <a v-link="{ path: 'tabletop' }">table</a>
+      go to the <a v-link="{ path: 'tabletop' }">tabletop</a>
     </p>
     <p>
       This will be written with

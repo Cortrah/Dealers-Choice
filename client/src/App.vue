@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <splash></splash>
-    <tabletop></tabletop>
     <router-view></router-view>
   </div>
 </template>
