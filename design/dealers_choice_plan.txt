@@ -1,60 +1,96 @@
+Splash.Stage => Game.Stage transition via slots and router
+add vuex
+
+Then flesh out a complete interface including admin
+Figure out what's client side and what's server side
+Figure out the admin interface and how the state and rules get passed to the bots
+At any point players can sit out a hand to answer the phone take care of the kids etc
+So the state needs to include everything.
+hub and spoke using hapi as the hub unless everything is client side for testing
+
 To start we'll just stub out
 5 dogs
 in 5 card bluff
 no responsiveness no security or admin
-a transition, but a basic one from splash to table
+a single basic transition from splash to table
 at the table we'll have 5 dogs
-each with a hand, a name and a stack of 500 bones
-
+each with a name, a picture, a stack of 500 bones, and a hand
 one marked as the dealer
-
+A pot in the middle
+As each player bets their ammount is put in front of them and the pot aggregates them
+Possibly like +20 ^20 5 5 20^30 = 100 (for bet 20 raise 20 pay 5 pay 5 call 20 and raise 30)
+When it's your turn you can check, call or raise the max bet if < max raises
 
 Use discourse as a clubhouse eventually
-Register a player
-Possibly use github 
-
+Register a player Possibly use github
 The player can play by hand 
 or he or she can register an ip address and rest interface to call for his or her bot that can be written in any language.
 
 We pass them rules in a json spec for the various games and they implement ai bots to play the games
+If a game isn't covered that bot sits out for that game
 
 We validate inputs and outputs and referee the games and track results
 
 We can do analasis on the ai's and look for patterns, flaws and strengths of different appoaches.
 
+Talky voice chat with a text chat backup
+
 Admin and hosting features
 ================
-A host can enforce that each game is played for a round of deals or freestyle.
-
 A host can schedule a game on a calendar, invite players, manage a clubhouse, assign a banker
-
 A host can choose the games available to a table.
+A host can enforce that each game is played for a round of deals or freestyle.
+A banker can give  a player chips either during a game or outside of a game
+The system tracks transfers for them
+A host can restrict a table to a set number of games
+A host can make a table freestyle or full rounds,
+or specify full rounds just for some games (those with dealer advantages)
 
-A banker can give  a player chips either during a game or outside of a game and tracks it for them
-
-Other
+Basic Setup
 ================
-Talky voice chat
+A table with x players each with y stacks
+Dealer rotates
+Any player can take a game definition copy it, customize it and give it a new name
+When a dealer announces a game
+as the cards are being dealt
+the rules appear in an attractive marquee style (rocky and bullwinkle show)
 
-A Set of Games
 
+================
 Five Card Bluff
 ================
-ante values
-betting limits, double the ante, pot or no limit;
-a table with x players each with y stacks
-look at 5 cards
-one round of betting
-a showdown
-dealer rotates
+
+Play Flow
+~~~~~~~~~~~~~~~~
+ante
+deal 5 rounds
+bet 1 round (check, bet, call, raise, fold)
+showdown
+
+Rules Options
++++++++++++++++
+Wild Cards - a group of
+	Any Individual Card "QH"
+	Any Face Value "2's"
+	Lowest Card in hand
+
+ante: 2 bones
+max bet: DOUBLE_ANTE, POT_LIMIT or NO_LIMIT;
+max raises: 3, NO_MAX
+
 
 Five Card Draw
 ================
-Same but 
-deal 5
-betting round
-draw up to three
-betting round
+
+Play Flow
+~~~~~~~~~~~~~~~~
+ante
+deal 5 rounds
+bet 1 round
+exchange up to three cards
+bet 1 round
+showdown
+
 
 Five Card Stud
 ================
