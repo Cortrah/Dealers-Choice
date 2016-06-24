@@ -8,7 +8,7 @@
       A simple poker game
     </p>
     <p>
-      go to the <a v-link="{ path: 'table' }">table</a>
+      go to the <a v-link="{ path: 'tabletop' }">table</a>
     </p>
     <p>
       This will be written with
@@ -41,17 +41,6 @@
 </script>
 
 <style>
-  html {
-    height: 100%;
-  }
-
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    background-image: url(../assets/paw_print.jpg);
-  }
 
   #splash {
     color: #2c3e50;

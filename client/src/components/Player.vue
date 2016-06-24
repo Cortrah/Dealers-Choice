@@ -20,9 +20,6 @@
 <style scoped>
 
 	.player {
-	  position: absolute;
-    align-items: center;
-    justify-content: center;
 	  color: #333333;
   	background-color: #EAEAEA;
   	background-alpa: 100%;
