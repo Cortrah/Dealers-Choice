@@ -1,27 +1,19 @@
 <template>
-  <div id="nav">
-    <p>
-      go to the <a v-link="{ path: 'splash' }">splash page</a>
-    </p>
-    <p>
-      go to the <a v-link="{ path: 'tabletop' }">tabletop</a>
-    </p>
-  </div>
   <div id="home">
+    <div id="nav">
+        <a v-link="{ path: '/splash' }">Splash</a>
+        <a v-link="{ path: '/tabletop' }">Tabletop</a>
+    </div>
     <router-view></router-view>
   </div>
 </template>
 
 <script type="text/babel">
   import Splash from './components/Splash'
-  import Tabletop from './components/Tabletop'
-  import Player from './components/Player'
 
   export default {
     components: {
-      Splash,
-      Tabletop,
-      Player
+      Splash
     }
   }
 </script>
