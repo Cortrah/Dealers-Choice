@@ -11,9 +11,6 @@ let router = new Router()
 
 router.map({
   '/': {
-    component: Home
-  },
-  '/splash': {
     component: Splash
   },
   '/tabletop': {

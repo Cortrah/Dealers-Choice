@@ -1,9 +1,5 @@
 <template>
   <div id="home">
-    <div id="nav">
-        <a v-link="{ path: '/splash' }">Splash</a>
-        <a v-link="{ path: '/tabletop' }">Tabletop</a>
-    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -29,13 +25,6 @@
     justify-content: center;
     height: 100%;
     background-image: url('./assets/paw_print.jpg');
-  }
-
-  #nav {
-    display: block;
-    position: absolute;
-    padding: 20px;
-    background-color: #f5f5f5;
   }
 
   #home {
