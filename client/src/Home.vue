@@ -20,19 +20,19 @@
   }
 
   body {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
     background-image: url('./assets/paw_print.jpg');
   }
 
   #home {
-    color: #2c3e50;
     margin-top: -100px;
     max-width: 600px;
     font-family: Source Sans Pro, Helvetica, sans-serif;
     text-align: center;
+    color: #2c3e50;
     background-color: #f5f5f5;
   }
 
