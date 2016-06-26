@@ -10,7 +10,7 @@
     <p>
       go to the <a v-link="{ path: 'tabletop' }">tabletop</a>
     </p>
-    <p>
+    <p transition="fade">
       This will be written with
       <a href="http://hapijs.com/">hapi</a> and
       <a href="https://vuejs.org/guide/components.html#Dynamic-Components">vue</a>.
@@ -31,6 +31,7 @@
 </template>
 
 <script type="text/babel">
+
   export default {
     data () {
       return {

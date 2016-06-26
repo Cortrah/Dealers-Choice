@@ -21,10 +21,9 @@ As each player bets their ammount is put in front of them and the pot aggregates
 Possibly like +20 ^20 5 5 20^30 = 100 (for bet 20 raise 20 pay 5 pay 5 call 20 and raise 30)
 When it's your turn you can check, call or raise the max bet if < max raises
 
-Use discourse as a clubhouse eventually
-Register a player Possibly use github
-The player can play by hand 
-or he or she can register an ip address and rest interface to call for his or her bot that can be written in any language.
+Use discourse as a clubhouse
+Host via AWS
+Register a player, a player can play by hand or he or she can register an ip address and rest interface to call for his or her bot that can be written in any language.
 
 We pass them rules in a json spec for the various games and they implement ai bots to play the games
 If a game isn't covered that bot sits out for that game

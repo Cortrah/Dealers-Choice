@@ -6,10 +6,12 @@
 	Get 5 card bluff bot interface done by next Agnotechvalley meeting.
 
 	Flesh these out for the rest of the year while working at state ed
+	Get some contract work - hapi, vue, aws, skinning discourse
 
 	Join FounderCafe and do those worksheets
 	Create a discourse site to house clubs
 	In December make Casual Card Table a public offering
+
 
 2017
 	Create Space Opera

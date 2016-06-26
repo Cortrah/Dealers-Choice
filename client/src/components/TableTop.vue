@@ -2,28 +2,20 @@
   <div id="tabletop">
     <div class="tabletop">
       <p>
-        A simple poker game
+        go to the <a v-link="{ path: '/' }">splash page</a>
       </p>
-      <p>
-        go to the <a v-link="{ path: 'splash' }">splash page</a>
+      <br/>
+      <player></player>
+      <player></player>
+      <player></player>
+      <p class="pot">
+        Pot
+        <span id="gogo" v-if="show" transition="bounce">Look at me!</span>
       </p>
-      <p>
-        This will be written with
-        <a href="http://hapijs.com/">hapi</a> and
-        <a href="https://vuejs.org/guide/components.html#Dynamic-Components">vue</a>.
-      </p>
-      <p>
-        It will probably also use
-        <a href="https://github.com/vuejs/vue-router/" target="_blank">vue-router</a> for routing, and possibly
-        <a href="https://github.com/vuejs/vuex/" target="_blank">vuex</a> for state management.
-      </p>
+      <player></player>
+      <player></player>
+      <player></player>
     </div>
-  </div>
-  <div id="players">
-    <player></player>
-    <player></player>
-    <player></player>
-    <player></player>
   </div>
 </template>
 
@@ -40,11 +32,14 @@
 <style>
 
   #tabletop {
-    color: #2c3e50;
-    margin-top: 50px;
+    display: inline-block;
+    justify-content: center;
+    margin-top: -100px;
     max-width: 600px;
+    padding: 20px;
     font-family: Source Sans Pro, Helvetica, sans-serif;
     text-align: center;
+    color: #2c3e50;
     background-color: #f5f5f5;
   }
 
@@ -53,8 +48,42 @@
     text-decoration: none;
   }
 
-  .players {
-    layout: block;
-    position: relative;
+  .pot {
+    align-items: center;
+    height: 100px;
   }
+  .bounce-transition {
+    display: inline-block; /* otherwise scale animation won't work */
+  }
+  .bounce-enter {
+    animation: bounce-in .5s;
+  }
+  .bounce-leave {
+    animation: bounce-out .5s;
+  }
+
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounce-out {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+
 </style>
