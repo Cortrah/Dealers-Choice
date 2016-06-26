@@ -10,12 +10,12 @@ Vue.use(Router)
 let router = new Router()
 
 router.map({
-  '/': {
-    component: Splash
-  },
-  '/tabletop': {
-    component: Tabletop
-  }
+    '/': {
+        component: Splash
+    },
+    '/tabletop': {
+        component: Tabletop
+    }
 })
 
 router.start(Home, 'app')
