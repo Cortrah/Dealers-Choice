@@ -1,5 +1,7 @@
 <template>
     <div id="home">
+        <button @click="doAThing()"> {{ offsetTicks }} </button>
+        <button @click="doAnotherThing()">Another Thing</button>
         <router-view></router-view>
     </div>
 </template>
@@ -10,6 +12,27 @@
     export default {
         components: {
             Splash
+        },
+        data: function () {
+            return {
+                ticks: 0
+            }
+        },
+        methods: {
+            doAThing: function () {
+                this.ticks++;
+            },
+            doAnotherThing: function () {
+                window.TweenMax.fromTo(this.$el, 2, {opacity: 1}, {opacity: 0, onComplete: this.goBack});
+            },
+            goBack: function () {
+                window.TweenMax.fromTo(this.$el, 2, {opacity: 0}, {opacity: 1, onComplete: this.doAnotherThing});
+            }
+        },
+        computed: {
+            offsetTicks: function () {
+                return this.ticks + 1;
+            }
         }
     }
 </script>
