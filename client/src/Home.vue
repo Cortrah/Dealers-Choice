@@ -23,10 +23,13 @@
                 this.ticks++;
             },
             doAnotherThing: function () {
-                window.TweenMax.fromTo(this.$el, 2, {opacity: 1}, {opacity: 0, onComplete: this.goBack});
+                // this.$children;
+                let elem = document.getElementById('splash');
+                window.TweenMax.fromTo(elem, 2, {opacity: 1}, {opacity: 0, onComplete: this.goBack});
             },
             goBack: function () {
-                window.TweenMax.fromTo(this.$el, 2, {opacity: 0}, {opacity: 1, onComplete: this.doAnotherThing});
+                let elem = document.getElementById('splash');
+                window.TweenMax.fromTo(elem, 2, {opacity: 0}, {opacity: 1, onComplete: this.doAnotherThing});
             }
         },
         computed: {

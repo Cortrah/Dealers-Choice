@@ -1,0 +1,34 @@
+SVG Layout 
+1-8 players + dealer + banker
+Responsive sizes
+
+Player Avatars
+Responsive sizes
+
+Animations
+Game Announcements
+Dealing Cards
+Bets
+Pot Changes
+Player Count Changes
+Player Taking Pot
+
+Player
+	Dealer Marker
+	Name
+	Avatar
+	Stacks
+	Cards
+	Card Flips
+	Bet Options
+	Bet Type and Ammount
+		Last Action 
+			Check ✓
+			Call c
+			Fold  x
+			Raise ^
+
+			Blind b
+			Big Blind B
+			All-in !
+
