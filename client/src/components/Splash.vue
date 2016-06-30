@@ -4,7 +4,8 @@
         <div class="splash">
             <h1>{{ msg }}</h1>
         </div>
-        <p>
+        <button @click="toggleGogo">Toggle</button>
+        <p id="gogo" v-show="displayGogo" class='animated' transition="fade">
             A simple poker game
         </p>
         <p>
@@ -31,11 +32,23 @@
 </template>
 
 <script type="text/babel">
+    import Vue from 'vue'
+
+    Vue.transition('fade', {
+       enterClass: 'flipInX',
+       leaveClass: 'fadeOutLeft'
+    });
 
     export default {
         data () {
             return {
+                displayGogo: true,
                 msg: 'Casual Card Table'
+            }
+        },
+        methods: {
+            toggleGogo: function (amt) {
+                this.displayGogo = !this.displayGogo;
             }
         }
     }
@@ -59,5 +72,9 @@
     .logo {
         width: 151px;
         height: 185px
+    }
+
+    p {
+        background: #ececec;
     }
 </style>
