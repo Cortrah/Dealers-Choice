@@ -1,5 +1,5 @@
 <template>
-    <div id="home">
+    <div id="main">
         <button @click="doAThing()"> {{ offsetTicks }} </button>
         <button @click="doAnotherThing()">Another Thing</button>
         <router-view></router-view>
@@ -24,11 +24,11 @@
             },
             doAnotherThing: function () {
                 // this.$children;
-                let elem = document.getElementById('splash');
+                let elem = document.getElementById('main');
                 window.TweenMax.fromTo(elem, 2, {opacity: 1}, {opacity: 0, onComplete: this.goBack});
             },
             goBack: function () {
-                let elem = document.getElementById('splash');
+                let elem = document.getElementById('main');
                 window.TweenMax.fromTo(elem, 2, {opacity: 0}, {opacity: 1, onComplete: this.doAnotherThing});
             }
         },
@@ -53,7 +53,8 @@
         background-image: url('./assets/paw_print.jpg');
     }
 
-    #home {
+    #main {
+        display: inline-block;
         max-width: 600px;
         font-family: Source Sans Pro, Helvetica, sans-serif;
         text-align: center;
@@ -61,7 +62,7 @@
         background-color: #f5f5f5;
     }
 
-    #home a {
+    #main a {
         color: #42b983;
         text-decoration: none;
     }

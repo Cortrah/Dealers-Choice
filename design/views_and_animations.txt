@@ -28,7 +28,3 @@ Player
 			Fold  x
 			Raise ^
 
-			Blind b
-			Big Blind B
-			All-in !
-

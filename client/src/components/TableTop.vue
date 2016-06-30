@@ -1,5 +1,5 @@
 <template>
-    <div id="tabletop">
+    <div id="main">
         <p>
             go to the <a v-link="{ path: '/' }">splash page</a>
         </p>
@@ -10,7 +10,7 @@
             <player v-bind:name="player.name" v-bind:bones="player.bones"></player>
         </template>
         <p id="pot">
-            Pot: <span id="gogo" v-show="displayPot" transition="bounce">{{ potValue }}</span>
+            Pot: <span id="gogo" v-show="displayPot" class='animated' transition="bounce">{{ potValue }}</span>
             <br/>
             <button v-on:click='updatePot(20)'>Update Pot</button>
         </p>
@@ -19,6 +19,12 @@
 
 <script type="text/babel">
     import Player from './Player'
+    import Vue from 'vue'
+
+    Vue.transition('bouncey', {
+        enterClass: 'bounceIn',
+        leaveClass: 'bounceOut'
+    });
 
     export default {
         el: function () {
@@ -104,22 +110,6 @@
 </script>
 
 <style>
-
-    #tabletop {
-        display: inline-block;
-        max-width: 600px;
-        padding: 20px;
-        font-family: Source Sans Pro, Helvetica, sans-serif;
-        text-align: center;
-        color: #2c3e50;
-        background-color: #f5f5f5;
-    }
-
-    #tabletop a {
-        color: #ee9f5e;
-        text-decoration: none;
-    }
-
     #pot {
         align-items: center;
         height: 100px;

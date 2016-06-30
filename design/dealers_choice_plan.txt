@@ -1,3 +1,4 @@
+
 Splash.Stage => Game.Stage transition via slots and router
 add vuex
 
@@ -44,6 +45,7 @@ The system tracks transfers for them
 A host can restrict a table to a set number of games
 A host can make a table freestyle or full rounds,
 or specify full rounds just for some games (those with dealer advantages)
+A host can force a player to check or fold if need be or set a timer to do so automatically, with faster repeating.
 
 Basic Setup
 ================

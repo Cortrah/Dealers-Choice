@@ -1,11 +1,11 @@
 <template>
-    <div id="splash">
+    <div id="main">
         <img class="logo" src="../assets/cav.png">
         <div class="splash">
             <h1>{{ msg }}</h1>
         </div>
         <button @click="toggleGogo">Toggle</button>
-        <p id="gogo" v-show="displayGogo" class='animated' transition="fade">
+        <p id="gogo" v-show="displayGogo" class='animated' transition="flipy">
             A simple poker game
         </p>
         <p>
@@ -34,9 +34,9 @@
 <script type="text/babel">
     import Vue from 'vue'
 
-    Vue.transition('fade', {
+    Vue.transition('flipy', {
        enterClass: 'flipInX',
-       leaveClass: 'fadeOutLeft'
+       leaveClass: 'flipOutX'
     });
 
     export default {
@@ -55,20 +55,6 @@
 </script>
 
 <style>
-
-    #splash {
-        max-width: 600px;
-        font-family: Source Sans Pro, Helvetica, sans-serif;
-        text-align: center;
-        color: #2c3e50;
-        background-color: #f5f5f5;
-    }
-
-    #splash a {
-        color: #42b983;
-        text-decoration: none;
-    }
-
     .logo {
         width: 151px;
         height: 185px
