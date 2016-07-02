@@ -1,6 +1,6 @@
 
-Splash.Stage => Game.Stage transition via slots and router
-add vuex
+Splash.Stage => Game.Stage transition
+via slots and router add vuex
 
 Then flesh out a complete interface including admin
 Figure out what's client side and what's server side
@@ -24,7 +24,9 @@ When it's your turn you can check, call or raise the max bet if < max raises
 
 Use discourse as a clubhouse
 Host via AWS
-Register a player, a player can play by hand or he or she can register an ip address and rest interface to call for his or her bot that can be written in any language.
+Register a player, a player can play by hand
+or he or she can register an ip address and rest interface
+to call for his or her bot that can be written in any language.
 
 We pass them rules in a json spec for the various games and they implement ai bots to play the games
 If a game isn't covered that bot sits out for that game
@@ -60,12 +62,17 @@ the rules appear in an attractive marquee style (rocky and bullwinkle show)
 ================
 Five Card Bluff
 ================
+currentDealer rotates
+chooses a game, shuffles, deals
 
 Play Flow
 ~~~~~~~~~~~~~~~~
-ante
+ante 2 bones
 deal 5 rounds
 bet 1 round (check, bet, call, raise, fold)
+currentBetter rotates
+max bet 2x ante
+max # raises = 3
 showdown
 
 Rules Options
@@ -85,9 +92,11 @@ Five Card Draw
 
 Play Flow
 ~~~~~~~~~~~~~~~~
-ante
+ante 2 bones
 deal 5 rounds
 bet 1 round
+max bet 2x ante
+max # raises = 3
 exchange up to three cards
 bet 1 round
 showdown

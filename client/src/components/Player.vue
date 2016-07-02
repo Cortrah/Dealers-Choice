@@ -1,6 +1,9 @@
 <template>
     <div class="player">
         <div class="name">
+            <span v-show="dealer">
+                Dealer
+            </span>
             {{ name }} : {{ betting }}
         </div>
         <img class="avatar" v-bind:src="avatar">
@@ -19,7 +22,7 @@
 <script type="text/babel">
 
     export default {
-        props: ['name', 'bones', 'betting'],
+        props: ['name', 'bones', 'betting', 'dealer'],
         betAmmount: 0,
         methods: {
             check: function () {

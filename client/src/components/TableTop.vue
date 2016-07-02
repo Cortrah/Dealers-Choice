@@ -1,18 +1,22 @@
 <template>
-    <div id="main">
+    <div id="stage">
         <p>
             go to the <a v-link="{ path: '/' }">splash page</a>
         </p>
-        Join: <input v-model='newPlayerName' v-on:keyup.enter='addPlayer'>
+        Join: <input v-model='newPlayerName' @keyup.enter='addPlayer'>
         <br/>
         <br/>
         <template v-for='player in players'>
-            <player v-bind:name="player.name" v-bind:bones="player.bones"></player>
+            <player :name="player.name"
+                    :avatar="player.avatar"
+                    :bones="player.bones"
+                    :dealer="player.dealer">
+            </player>
         </template>
         <p id="pot">
             Pot: <span id="gogo" v-show="displayPot" class='animated' transition="bounce">{{ potValue }}</span>
             <br/>
-            <button v-on:click='updatePot(20)'>Update Pot</button>
+            <button @click='updatePot(20)'>Update Pot</button>
         </p>
     </div>
 </template>
@@ -42,18 +46,21 @@
                 players: [
                     {
                         'name': 'jo jo',
+                        'dealer': true,
                         'avatar': '../assets/cav.png',
                         'bones': 300,
                         'betting': 60
                     },
                     {
                         'name': 'frankie',
+                        'dealer': false,
                         'avatar': '../assets/cav.png',
                         'bones': 600,
                         'betting': 0
                     },
                     {
                         'name': 'digdug',
+                        'dealer': false,
                         'avatar': '../assets/cav.png',
                         'bones': 500,
                         'betting': 0
@@ -98,6 +105,7 @@
                 if (playerName) {
                     this.players.push({
                         'name': playerName,
+                        'dealer': false,
                         'avatar': '../assets/cav.png',
                         'bones': parseInt(Math.random() * 1000),
                         'betting': 0,

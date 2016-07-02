@@ -1,5 +1,5 @@
 <template>
-    <div id="main">
+    <div id="stage">
         <img class="logo" src="../assets/cav.png">
         <div class="splash">
             <h1>{{ msg }}</h1>
@@ -61,6 +61,6 @@
     }
 
     p {
-        background: #ececec;
+        background: #f5f5f5;
     }
 </style>

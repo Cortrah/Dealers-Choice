@@ -1,7 +1,10 @@
 <template>
-    <div id="main">
+    <div id="nav">
         <button @click="doAThing()"> {{ offsetTicks }} </button>
         <button @click="doAnotherThing()">Another Thing</button>
+    </div>
+
+    <div id="stage">
         <router-view></router-view>
     </div>
 </template>
@@ -24,12 +27,16 @@
             },
             doAnotherThing: function () {
                 // this.$children;
-                let elem = document.getElementById('main');
-                window.TweenMax.fromTo(elem, 2, {opacity: 1}, {opacity: 0, onComplete: this.goBack});
+                let elem = document.getElementById('stage');
+                window.TweenMax.fromTo(elem, 2,
+                    {height: 800, width: 800},
+                    {height: 400, width: 600, onComplete: this.goBack});
             },
             goBack: function () {
-                let elem = document.getElementById('main');
-                window.TweenMax.fromTo(elem, 2, {opacity: 0}, {opacity: 1, onComplete: this.doAnotherThing});
+                let elem = document.getElementById('stage');
+                window.TweenMax.fromTo(elem, 2,
+                    {height: 400, width: 600},
+                    {height: 800, width: 800, onComplete: this.doAnotherThing});
             }
         },
         computed: {
@@ -53,9 +60,18 @@
         background-image: url('./assets/paw_print.jpg');
     }
 
-    #main {
+    #nav {
+        position:absolute;
+        top:0px;
+        left:0px;
+        height:30px;
+        width: 100%;
+        background-color: #f5f5f5;
+    }
+
+    #stage {
         display: inline-block;
-        max-width: 600px;
+        width: 600px;
         font-family: Source Sans Pro, Helvetica, sans-serif;
         text-align: center;
         color: #2c3e50;
