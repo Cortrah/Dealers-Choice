@@ -28,15 +28,13 @@
             doAnotherThing: function () {
                 // this.$children;
                 let elem = document.getElementById('stage');
-                window.TweenMax.fromTo(elem, 2,
-                    {height: 800, width: 800},
-                    {height: 400, width: 600, onComplete: this.goBack});
+                window.TweenMax.to(elem, 0.5,
+                    {height: 550, onComplete: this.goBack});
             },
             goBack: function () {
                 let elem = document.getElementById('stage');
-                window.TweenMax.fromTo(elem, 2,
-                    {height: 400, width: 600},
-                    {height: 800, width: 800, onComplete: this.doAnotherThing});
+                window.TweenMax.to(elem, 0.5,
+                    {height: 400, onComplete: this.doAnotherThing});
             }
         },
         computed: {
