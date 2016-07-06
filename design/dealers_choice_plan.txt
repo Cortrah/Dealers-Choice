@@ -1,6 +1,4 @@
-
-Splash.Stage => Game.Stage transition
-via slots and router add vuex
+Splash.Stage => Game.Stage transition via slots and router add vuex
 
 Then flesh out a complete interface including admin
 Figure out what's client side and what's server side
@@ -10,8 +8,7 @@ So the state needs to include everything.
 hub and spoke using hapi as the hub unless everything is client side for testing
 
 To start we'll just stub out
-5 dogs
-in 5 card bluff
+5 dogs in 5 card bluff
 no responsiveness no security or admin
 a single basic transition from splash to table
 at the table we'll have 5 dogs
@@ -32,9 +29,7 @@ We pass them rules in a json spec for the various games and they implement ai bo
 If a game isn't covered that bot sits out for that game
 
 We validate inputs and outputs and referee the games and track results
-
 We can do analasis on the ai's and look for patterns, flaws and strengths of different appoaches.
-
 Talky voice chat with a text chat backup
 
 Admin and hosting features
@@ -57,23 +52,8 @@ Any player can take a game definition copy it, customize it and give it a new na
 When a dealer announces a game
 as the cards are being dealt
 the rules appear in an attractive marquee style (rocky and bullwinkle show)
-
-
-================
-Five Card Bluff
-================
 currentDealer rotates
 chooses a game, shuffles, deals
-
-Play Flow
-~~~~~~~~~~~~~~~~
-ante 2 bones
-deal 5 rounds
-bet 1 round (check, bet, call, raise, fold)
-currentBetter rotates
-max bet 2x ante
-max # raises = 3
-showdown
 
 Rules Options
 +++++++++++++++
@@ -86,12 +66,20 @@ ante: 2 bones
 max bet: DOUBLE_ANTE, POT_LIMIT or NO_LIMIT;
 max raises: 3, NO_MAX
 
+================
+Five Card Bluff
+================
+ante 2 bones
+deal 5 rounds
+bet 1 round (check, bet, call, raise, fold)
+currentBetter rotates
+max bet 2x ante
+max # raises = 3
+showdown
 
+================
 Five Card Draw
 ================
-
-Play Flow
-~~~~~~~~~~~~~~~~
 ante 2 bones
 deal 5 rounds
 bet 1 round
@@ -101,42 +89,16 @@ exchange up to three cards
 bet 1 round
 showdown
 
-
 Five Card Stud
-================
-
 Jacks or Better
-================
-
 Jacks or Better, Trips to win
-================
-
 Seven Card Stud
-================
-
 Seven Card High-Low
-================
-
 Texas Hold-em
-================
-
 Acey Deucy
-================
-
 Black Maraiah
-================
-
 Guts
-================
-
 Man or Mouse
-================
-
 The Wrecking Ball
-================
-
 Wild Cards
-================
-
 Seven Card Pass-em
-================

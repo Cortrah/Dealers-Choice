@@ -1,7 +1,11 @@
 <template>
     <div id="nav">
-        <button @click="doAThing()"> {{ offsetTicks }} </button>
-        <button @click="doAnotherThing()">Another Thing</button>
+        <button @click="gotoTabletop()">gotoTabletop</button>
+        Clicked: {{ count }} times
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+        <button @click="incrementIfOdd">Increment if odd</button>
+        <button @click="incrementAsync">Increment async</button>
     </div>
 
     <div id="stage">
@@ -11,35 +15,36 @@
 
 <script type="text/babel">
     import Splash from './components/Splash'
+    import store from './vuex/store'
+    import * as actions from './vuex/actions'
 
+    // this is the equivalent of the results from
+    // var app = new Vue({
+    // in the default examples
+    // as it is my root Vue component
     export default {
+        store,
+        vuex: {
+          getters: {
+              count: state => state.count
+          },
+          actions: actions
+        },
         components: {
             Splash
         },
-        data: function () {
-            return {
-                ticks: 0
-            }
-        },
         methods: {
-            doAThing: function () {
-                this.ticks++;
+            inkie: function () {
+                store.dispatch('INCREMENT');
             },
-            doAnotherThing: function () {
+            gotoTabletop: function () {
                 // this.$children;
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
-                    {height: 550, onComplete: this.goBack});
+                    {height: 600, onComplete: this.goTabletop});
             },
-            goBack: function () {
-                let elem = document.getElementById('stage');
-                window.TweenMax.to(elem, 0.5,
-                    {height: 400, onComplete: this.doAnotherThing});
-            }
-        },
-        computed: {
-            offsetTicks: function () {
-                return this.ticks + 1;
+            goTabletop: function () {
+                this.$route.router.go('/tabletop');
             }
         }
     }
@@ -79,103 +84,5 @@
     #main a {
         color: #42b983;
         text-decoration: none;
-    }
-
-    .bounce-transition {
-        display: inline-block;
-    }
-
-    .bounce-enter {
-        -webkit-animation: bounce-in .5s;
-        animation: bounce-in .5s;
-    }
-
-    .bounce-leave {
-        -webkit-animation: bounce-out .5s;
-        animation: bounce-out .5s;
-    }
-
-    @keyframes bounce-in {
-        0% {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-        50% {
-            -webkit-transform: scale(1.5);
-            transform: scale(1.5);
-        }
-        100% {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-    }
-
-    @keyframes bounce-out {
-        0% {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-        50% {
-            -webkit-transform: scale(1.5);
-            transform: scale(1.5);
-        }
-        100% {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-    }
-
-    @-webkit-keyframes bounce-in {
-        0% {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-        50% {
-            -webkit-transform: scale(1.5);
-            transform: scale(1.5);
-        }
-        100% {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-    }
-
-    @-webkit-keyframes bounce-out {
-        0% {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-        50% {
-            -webkit-transform: scale(1.5);
-            transform: scale(1.5);
-        }
-        100% {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-    }
-
-    @keyframes bounce-in {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.5);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-
-    @keyframes bounce-out {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.5);
-        }
-        100% {
-            transform: scale(1);
-        }
     }
 </style>

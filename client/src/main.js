@@ -1,21 +1,10 @@
-import Vue from 'vue'
 import Home from './Home'
-import Splash from './components/Splash'
-import Tabletop from './components/Tabletop'
 
-import Router from 'vue-router'
+import store from './vuex/store'
+import {sync} from 'vuex-router-sync'
 
-Vue.use(Router)
+import router from './router'
 
-let router = new Router()
-
-router.map({
-    '/': {
-        component: Splash
-    },
-    '/tabletop': {
-        component: Tabletop
-    }
-})
+sync(store, router)
 
 router.start(Home, 'app')

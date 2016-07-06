@@ -1,9 +1,8 @@
 <template>
     <div id="stage">
-        <img class="logo" src="../assets/cav.png">
-        <div class="splash">
-            <h1>{{ msg }}</h1>
-        </div>
+        <p>
+            go to the <a v-link="{ path: '/' }">splash page</a>
+        </p>
         <button @click="toggleGogo">Toggle</button>
         <p id="gogo" v-show="displayGogo" class='animated' transition="flipy">
             A simple poker game
@@ -12,13 +11,10 @@
             you can <a v-link="{ path: 'register' }">register</a>
         </p>
         <p>
-            you can <a v-link="{ path: 'login' }">login</a>
+            go to the <a v-link="{ path: 'tabletop' }">tabletop</a>
         </p>
         <p>
             go to the <a v-link="{ path: 'lobby' }">lobby</a>
-        </p>
-        <p>
-            go to the <a v-link="{ path: 'tabletop' }">tabletop</a>
         </p>
     </div>
 </template>
