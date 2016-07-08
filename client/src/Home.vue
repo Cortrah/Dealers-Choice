@@ -25,10 +25,10 @@
     export default {
         store,
         vuex: {
-          getters: {
-              count: state => state.count
-          },
-          actions: actions
+            getters: {
+                count: state => state.count
+            },
+            actions: actions
         },
         components: {
             Splash
