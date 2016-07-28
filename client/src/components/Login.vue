@@ -3,18 +3,17 @@
         <p>
             go to the <a v-link="{ path: '/' }">splash page</a>
         </p>
-        <button @click="toggleGogo">Toggle</button>
-        <p id="gogo" v-show="displayGogo" class='animated' transition="flipy">
-            A simple poker game
-        </p>
         <p>
-            you can <a v-link="{ path: 'register' }">register</a>
+            or <a v-link="{ path: 'register' }">register</a>
         </p>
         <p>
             go to the <a v-link="{ path: 'tabletop' }">tabletop</a>
         </p>
         <p>
             go to the <a v-link="{ path: 'lobby' }">lobby</a>
+        </p>
+        <p>
+            edit your <a v-link="{ path: 'profile' }">profile</a>
         </p>
     </div>
 </template>

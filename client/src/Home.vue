@@ -4,39 +4,30 @@
         Clicked: {{ count }} times
         <button @click="increment">+</button>
         <button @click="decrement">-</button>
-        <button @click="incrementIfOdd">Increment if odd</button>
-        <button @click="incrementAsync">Increment async</button>
     </div>
 
     <div id="stage">
-        <router-view></router-view>
+        <router-view :count='count'></router-view>
     </div>
 </template>
 
 <script type="text/babel">
     import Splash from './components/Splash'
-    import store from './vuex/store'
-    import * as actions from './vuex/actions'
 
     // this is the equivalent of the results from
     // var app = new Vue({
     // in the default examples
     // as it is my root Vue component
     export default {
-        store,
-        vuex: {
-            getters: {
-                count: state => state.count
-            },
-            actions: actions
+        data () {
+            return {
+                count: '23',
+            }
         },
         components: {
             Splash
         },
         methods: {
-            inkie: function () {
-                store.dispatch('INCREMENT');
-            },
             gotoTabletop: function () {
                 // this.$children;
                 let elem = document.getElementById('stage');
@@ -45,6 +36,12 @@
             },
             goTabletop: function () {
                 this.$route.router.go('/tabletop');
+            },
+            increment: function () {
+                this.count++;
+            },
+            decrement: function () {
+                this.count--;
             }
         }
     }

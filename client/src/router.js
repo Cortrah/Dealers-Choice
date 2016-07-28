@@ -6,6 +6,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import Lobby from './components/Lobby'
 import Tabletop from './components/Tabletop'
+import Profile from './components/Profile'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,9 @@ router.map({
     },
     '/tabletop': {
         component: Tabletop
+    },
+    '/profile': {
+      component: Profile
     }
 })
 
