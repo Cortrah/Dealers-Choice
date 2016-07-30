@@ -20,6 +20,7 @@
         data () {
             return {
                 count: '23',
+                destination: ''
             }
         },
         components: {
@@ -29,12 +30,13 @@
             gotoTabletop: function () {
                 // this.$children;
                 let elem = document.getElementById('stage');
+                this.destination = 'tabletop';
                 window.TweenMax.to(elem, 0.5,
-                    {height: 600, onComplete: this.go('tabletop')});
+                    {height: 600, onComplete: this.nav});
             },
-            go: function (route) {
-                this.$route.router.go('/' + route);
-            }
+            nav: function (route) {
+                this.$route.router.go('/' + this.destination);
+            },
             increment: function () {
                 this.count++;
             },

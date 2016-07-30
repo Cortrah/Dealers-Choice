@@ -7,7 +7,7 @@
         <h2>Games</h2>
         <ul id="gameList">
             <li v-for="game in games">
-                {{ game.name }}
+                {{ game.name }} <button  @click="joinGame()">Join</button>
             </li>
         </ul>
         <h2>Players</h2>
@@ -17,11 +17,12 @@
             </li>
         </ul>
         <h2>Discussion</h2>
-        <textarea v-model="message" placeholder="many messages"></textarea>
+        <textarea v-model="discussion" placeholder="discussion"></textarea>
         <br/>
         <input type="text" v-model="message" placeholder="my message">
         <br/>
-        <button @click="createGame()"> Create a game </button>
+        <br/>
+        <button @click="hostGame()"> Host a game </button>
     </div>
 </template>
 
@@ -38,22 +39,33 @@
             return {
                 displayGogo: true,
                 title: 'Lobby',
+                discussion: '',
+                message: '',
                 games: [
-                    { name: 'Foo' },
-                    { name: 'Bar' }
+                    { name: 'Cort\'s Table' }
                 ],
                 players: [
-                    { name: 'Joe' },
-                    { name: 'Ban' }
+                    { name: 'Jim' },
+                    { name: 'Whitey' },
+                    { name: 'Dan' },
+                    { name: 'Kyle' },
+                    { name: 'Bob' },
+                    { name: 'Cort' }
                 ]
             }
         },
         methods: {
-            createGame: function () {
+            joinGame: function () {
                 // this.$children;
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
                     {height: 600, onComplete: this.go('tabletop')});
+            },
+            hostGame: function () {
+                // this.$children;
+                let elem = document.getElementById('stage');
+                window.TweenMax.to(elem, 0.5,
+                    {height: 600, onComplete: this.go('host')});
             },
             go: function (route) {
                 this.$route.router.go('/' + route);

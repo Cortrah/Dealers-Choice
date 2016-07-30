@@ -8,6 +8,7 @@ import Lobby from './components/Lobby'
 import Tabletop from './components/Tabletop'
 import Profile from './components/Profile'
 import Forgot from './components/Forgot'
+import Host from './components/Host'
 
 Vue.use(VueRouter)
 
@@ -32,9 +33,12 @@ router.map({
     '/profile': {
       component: Profile
     },
+    '/host': {
+      component: Host
+    },
     '/forgot': {
-      component: Forgot
-  }
+        component: Forgot
+    }
 })
 
 export default router
