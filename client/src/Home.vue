@@ -2,13 +2,15 @@
     <div id="home">
         <div id="header">
             <button @click="gotoTabletop()">gotoTabletop</button>
-            Clicked: {{ count }} times
+            Clicked: {{ count }} times {{ obj.thing1 }}
             <button @click="increment">+</button>
             <button @click="decrement">-</button>
+            Add Player: <input v-model='newPlayerName' @keyup.enter='addPlayer'>
+            <br/>
         </div>
 
         <div id="stage">
-            <router-view :count='count'></router-view>
+            <router-view :count='count' :obj='obj' :players='players'></router-view>
         </div>
     </div>
 </template>
@@ -20,7 +22,59 @@
         data () {
             return {
                 count: '23',
-                destination: ''
+                destination: '',
+                obj: {thing1: 'objectproperty'},
+                newPlayerName: '',
+                players: [
+                    {
+                        'name': 'Jim',
+                        'dealer': true,
+                        'host': false,
+                        'avatar': '../assets/cav.png',
+                        'bones': 400,
+                        'betting': 60
+                    },
+                    {
+                        'name': 'Whitey',
+                        'dealer': false,
+                        'host': false,
+                        'avatar': '../assets/cav.png',
+                        'bones': 400,
+                        'betting': 0
+                    },
+                    {
+                        'name': 'Dan',
+                        'dealer': false,
+                        'host': false,
+                        'avatar': '../assets/cav.png',
+                        'bones': 400,
+                        'betting': 0
+                    },
+                    {
+                        'name': 'Kyle',
+                        'dealer': false,
+                        'host': false,
+                        'avatar': '../assets/cav.png',
+                        'bones': 400,
+                        'betting': 0
+                    },
+                    {
+                        'name': 'Bob',
+                        'dealer': false,
+                        'host': false,
+                        'avatar': '../assets/cav.png',
+                        'bones': 400,
+                        'betting': 0
+                    },
+                    {
+                        'name': 'Cort',
+                        'dealer': false,
+                        'host': true,
+                        'avatar': '../assets/cav.png',
+                        'bones': 400,
+                        'betting': 0
+                    }
+                ]
             }
         },
         components: {
@@ -42,6 +96,19 @@
             },
             decrement: function () {
                 this.count--;
+            },
+            addPlayer: function () {
+                let playerName = this.newPlayerName.trim()
+                if (playerName) {
+                    this.players.push({
+                        'name': playerName,
+                        'dealer': false,
+                        'avatar': '../assets/cav.png',
+                        'bones': parseInt(Math.random() * 1000),
+                        'betting': 0,
+                    });
+                    this.newPlayerText = '';
+                }
             }
         }
     }
