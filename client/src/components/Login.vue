@@ -1,20 +1,22 @@
 <template>
     <div id="stage">
         <p>
-            go to the <a v-link="{ path: '/' }">splash page</a>
+           back to the <a v-link="{ path: '/' }">splash page</a> or <a v-link="{ path: 'register' }">register</a>
+
         </p>
-        <p>
-            or <a v-link="{ path: 'register' }">register</a>
-        </p>
-        <p>
-            go to the <a v-link="{ path: 'tabletop' }">tabletop</a>
-        </p>
-        <p>
-            go to the <a v-link="{ path: 'lobby' }">lobby</a>
-        </p>
-        <p>
-            edit your <a v-link="{ path: 'profile' }">profile</a>
-        </p>
+        <h1>Log In</h1>
+        <label>Username or email</label>
+        <br/>
+        <input id="userName" type="text"/>
+        <br/>
+        <label>Password</label>
+        <br/>
+        <input id="password" type="password"/>
+        <br/>
+        <br/>
+        <button @click="enter()"> sign in </button> <a v-link="{ path: 'forgot' }">forgot your password?</a>
+        <br/>
+        <br/>
     </div>
 </template>
 
@@ -36,14 +38,16 @@
         methods: {
             toggleGogo: function (amt) {
                 this.displayGogo = !this.displayGogo;
+            },
+            enter: function () {
+                // this.$children;
+                let elem = document.getElementById('stage');
+                window.TweenMax.to(elem, 0.5,
+                    {height: 600, onComplete: this.goTabletop});
+            },
+            goTabletop: function () {
+                this.$route.router.go('/tabletop');
             }
         }
     }
 </script>
-
-<style>
-    .logo {
-        width: 151px;
-        height: 185px
-    }
-</style>

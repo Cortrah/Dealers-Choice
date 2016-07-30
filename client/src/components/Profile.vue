@@ -9,7 +9,7 @@
                 please feel free to either <a v-link="{ path: 'register' }">register</a>
             </p>
             <p>
-                or <a v-link="{ path: 'login' }">signin</a>
+                or <a v-link="{ path: 'login' }">log in</a>
             </p>
         </div>
         <div v-else>

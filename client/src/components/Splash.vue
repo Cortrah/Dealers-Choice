@@ -2,14 +2,14 @@
     <div id="stage">
         <img class="logo" src="../assets/cav.png">
         <div class="splash">
-            <h1>{{ msg }}</h1>
+            <h1>{{ msg }} {{ count }} </h1>
         </div>
         <div v-if="!loggedIn">
             <p>
                 please feel free to either <a v-link="{ path: 'register' }">register</a>
             </p>
             <p>
-                or <a v-link="{ path: 'login' }">signin</a>
+                or <a v-link="{ path: 'login' }">log in</a>
             </p>
         </div>
         <div v-else>

@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Lobby from './components/Lobby'
 import Tabletop from './components/Tabletop'
 import Profile from './components/Profile'
+import Forgot from './components/Forgot'
 
 Vue.use(VueRouter)
 
@@ -30,7 +31,10 @@ router.map({
     },
     '/profile': {
       component: Profile
-    }
+    },
+    '/forgot': {
+      component: Forgot
+  }
 })
 
 export default router

@@ -1,23 +1,21 @@
 <template>
-    <div id="nav">
-        <button @click="gotoTabletop()">gotoTabletop</button>
-        Clicked: {{ count }} times
-        <button @click="increment">+</button>
-        <button @click="decrement">-</button>
-    </div>
+    <div id="home">
+        <div id="header">
+            <button @click="gotoTabletop()">gotoTabletop</button>
+            Clicked: {{ count }} times
+            <button @click="increment">+</button>
+            <button @click="decrement">-</button>
+        </div>
 
-    <div id="stage">
-        <router-view :count='count'></router-view>
+        <div id="stage">
+            <router-view :count='count'></router-view>
+        </div>
     </div>
 </template>
 
 <script type="text/babel">
     import Splash from './components/Splash'
 
-    // this is the equivalent of the results from
-    // var app = new Vue({
-    // in the default examples
-    // as it is my root Vue component
     export default {
         data () {
             return {
@@ -60,7 +58,7 @@
         background-image: url('./assets/paw_print.jpg');
     }
 
-    #nav {
+    #header {
         position:absolute;
         top:0px;
         left:0px;
