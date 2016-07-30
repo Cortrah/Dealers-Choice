@@ -51,7 +51,7 @@
                     <input id="port" type="text" placeholder=":8080"/>
                 </div>
             </div>
-            <button @click="create()"> Create my account </button>
+            <button @click="createAccount()"> Create my account </button>
     </div>
 </template>
 
@@ -77,14 +77,14 @@
             toggleGogo: function (amt) {
                 this.displayGogo = !this.displayGogo;
             },
-            create: function () {
+            createAccount: function () {
                 // this.$children;
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
-                    {height: 600, onComplete: this.goLobby});
+                    {height: 600, onComplete: this.go('lobby')});
             },
-            goLobby: function () {
-                this.$route.router.go('/lobby');
+            go: function (route) {
+                this.$route.router.go('/' + route);
             }
         }
     }

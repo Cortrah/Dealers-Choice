@@ -30,11 +30,11 @@
                 // this.$children;
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
-                    {height: 600, onComplete: this.goTabletop});
+                    {height: 600, onComplete: this.go('tabletop')});
             },
-            goTabletop: function () {
-                this.$route.router.go('/tabletop');
-            },
+            go: function (route) {
+                this.$route.router.go('/' + route);
+            }
             increment: function () {
                 this.count++;
             },
