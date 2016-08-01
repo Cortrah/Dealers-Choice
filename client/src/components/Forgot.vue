@@ -1,8 +1,5 @@
 <template>
     <div id="stage">
-        <p>
-            back to the <a v-link="{ path: '/' }">splash page</a>
-        </p>
         <h1>{{ title }}</h1>
         <div v-if="sent">
             If an account matched that address, an email will be sent with instructions.

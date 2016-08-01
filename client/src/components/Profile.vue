@@ -1,68 +1,58 @@
 <template>
     <div id="stage">
-        <img class="logo" src="../assets/cav.png">
-        <div class="splash">
-            <h1>{{ msg }}</h1>
-        </div>
-        <div v-if="!loggedIn">
-            <p>
-                please feel free to either <a v-link="{ path: 'register' }">register</a>
-            </p>
-            <p>
-                or <a v-link="{ path: 'login' }">log in</a>
-            </p>
-        </div>
-        <div v-else>
-            <p>
-                go to the <a v-link="{ path: 'lobby' }">lobby</a>
-            </p>
-            <p>
-                or <a v-link="{ path: 'logout' }">sign out</a>
-            </p>
-        </div>
+        <h1>{{ title }}</h1>
+        <div>
+            <label>First Name</label>
+            <input id="firstName" type="text" placeholder="First Name"/>
 
-        <div id="thingie">
-            <component :is="currentView"></component> {{ thing }}
-            <ul id="aList">
-                <p>{{ message }} {{ players.length }}</p>
-                <input v-model="inputMessage">{{ count }}
-                <button @click="addPlayer(inputMessage)">Greet</button>
-                <li v-for="player in players">
-                    {{ player.name }}
-                </li>
-            </ul>
+            <label>Last Name</label>
+            <input id="lastName" type="text" placeholder="Last Name"/>
+            <br/>
+
+            <label>Email</label>
+            <input id="email" type="text" placeholder="Email"/>
+            <br/>
+
+            <label>Username</label>
+            <input id="userName" v-model="userName"
+                   type="text" placeholder="Mina"/>
+
+            <label>Password</label>
+            <input id="password" type="password" placeholder="Password"/>
         </div>
+        <div>
+            <img class="avatar" src="../assets/cav.png">
+            <select v-model="puppyPicture">
+                <option selected>Cavalier</option>
+                <option>Pug</option>
+                <option>Boston Terrier</option>
+                <option>Neufi</option>
+                <option>Border Collie</option>
+                <option>Mini Schnauser</option>
+                <option>Lab Mix</option>
+            </select>
+
+            <div>
+                <label for="checkbox" >
+                    <input id="checkbox" type="checkbox" v-model="botChecked">
+                    Use a Bot
+                </label>
+            </div>
+
+            <div v-if="botChecked">
+                <label>Ip Address</label>
+                <input id="ipAddress" type="text" placeholder="https://123.122.1.2"/>
+
+                <label>Port</label>
+                <input id="port" type="text" placeholder=":8080"/>
+            </div>
+        </div>
+        <button @click="createAccount()"> Create my account </button>
     </div>
 </template>
 
 <script type="text/babel">
     import Vue from 'vue'
-
-    // creating the constructors
-    let MyComponentA = Vue.extend({
-        template: '<div>{{ guy }} custom component with a !</div>',
-        data: function () {
-            return {
-                guy: 'A'
-            }
-        },
-        el: function () {
-            return parseInt(Math.rand() * 10000).toString()
-        }
-    })
-
-    let MyComponentB = Vue.extend({
-        template: '<div>{{ guy }} custom component!</div>',
-        data: function () {
-            return {
-                guy: 'B'
-            }
-        }
-    })
-
-    // globally registering the constructors with a tag name
-    Vue.component('aList', MyComponentA);
-    Vue.component('baab', MyComponentB);
 
     Vue.transition('flipy', {
         enterClass: 'flipInX',
@@ -70,34 +60,34 @@
     });
 
     export default {
-        props: ['count', 'thing'],
-        el: function () {
-            return '#thingie' + parseInt(Math.rand() * 10000).toString()
-        },
         data () {
             return {
-                loggedIn: false,
-                msg: 'Casual Card Table',
-                inputMessage: 'ok',
-                currentView: 'aList',
-                players: [
-                    { name: 'guy' },
-                    { name: 'smiley' }
-                ]
+                displayGogo: true,
+                puppyPicture: 'Cavalier',
+                userName: 'Mina',
+                botChecked: false,
+                title: 'Profile'
             }
         },
         methods: {
-            addPlayer: function (name) {
-                this.players.push({'name': name});
-                this.currentView = 'baab';
+            toggleGogo: function (amt) {
+                this.displayGogo = !this.displayGogo;
+            },
+            createAccount: function () {
+                // this.$children;
+                let elem = document.getElementById('stage');
+                window.TweenMax.to(elem, 0.5,
+                    {height: 600, onComplete: this.go('lobby')});
+            },
+            go: function (route) {
+                this.$route.router.go('/' + route);
             }
         }
     }
 </script>
-
 <style>
-    .logo {
-        width: 151px;
-        height: 185px
+    .avatar {
+        width: 75px;
+        height: 90px
     }
 </style>

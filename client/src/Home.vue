@@ -1,12 +1,21 @@
 <template>
     <div id="home">
         <div id="header">
-            <button @click="gotoTabletop()">gotoTabletop</button>
-            Clicked: {{ count }} times {{ obj.thing1 }}
+            <a v-link="{ path: '/' }">Home</a>
+            Clicked: {{ count }} times
             <button @click="increment">+</button>
             <button @click="decrement">-</button>
+            {{ obj.thing1 }}
             Add Player: <input v-model='newPlayerName' @keyup.enter='addPlayer'>
-            <br/>
+            <button @click="gotoTabletop()">gotoTabletop</button>
+            <span v-if="!loggedIn">
+                    <a v-link="{ path: 'register' }">register</a>
+                    or <a v-link="{ path: 'login' }">log in</a>
+            </span>
+            <span v-else>
+                    <a v-link="{ path: 'lobby' }">lobby</a>
+                    <a v-link="{ path: 'logout' }">sign out</a>
+            </span>
         </div>
 
         <div id="stage">
@@ -21,9 +30,10 @@
     export default {
         data () {
             return {
+                loggedIn: false,
                 count: '23',
                 destination: '',
-                obj: {thing1: 'objectproperty'},
+                obj: {thing1: 'obj.prop'},
                 newPlayerName: '',
                 players: [
                     {

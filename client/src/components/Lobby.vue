@@ -1,10 +1,7 @@
 <template>
     <div id="stage">
-        <p>
-            back to the <a v-link="{ path: '/' }">splash page</a>
-        </p>
         <h1>{{ title }}</h1>
-        <h2>Games</h2>
+        <h2>Tables</h2>
         <ul id="gameList">
             <li v-for="game in games">
                 {{ game.name }} <button  @click="joinGame()">Join</button>

@@ -1,9 +1,5 @@
 <template>
     <div id="stage">
-        <p>
-           back to the <a v-link="{ path: '/' }">splash page</a> or <a v-link="{ path: 'register' }">register</a>
-
-        </p>
         <h1>Log In</h1>
         <label>Username or email</label>
         <br/>
@@ -15,6 +11,9 @@
         <br/>
         <br/>
         <button @click="enter()"> sign in </button> <a v-link="{ path: 'forgot' }">forgot your password?</a>
+        <br/>
+        <br/>
+        or <a v-link="{ path: 'register' }">register</a>
         <br/>
         <br/>
     </div>
