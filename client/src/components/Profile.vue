@@ -20,7 +20,10 @@
             <label>Password</label>
             <input id="password" type="password" placeholder="Password"/>
         </div>
+        <br/>
+
         <div>
+            <p>Select a Puppy</p>
             <img class="avatar" src="../assets/cav.png">
             <select v-model="puppyPicture">
                 <option selected>Cavalier</option>
@@ -31,15 +34,29 @@
                 <option>Mini Schnauser</option>
                 <option>Lab Mix</option>
             </select>
+            <br/>
+            <br/>
 
             <div>
                 <label for="checkbox" >
                     <input id="checkbox" type="checkbox" v-model="botChecked">
-                    Use a Bot
+                    Or use a Bot
                 </label>
             </div>
-
             <div v-if="botChecked">
+                <br/>
+                <img class="avatar" src="../assets/cav.png">
+                <select v-model="botPicture">
+                    <option selected>Protobot</option>
+                    <option>Nodebot</option>
+                    <option>Streambot</option>
+                    <option>Grammarbot</option>
+                    <option>Lambdabot</option>
+                    <option>Eventbot</option>
+                    <option>nullbot</option>
+                </select>
+                <br/>
+                <br/>
                 <label>Ip Address</label>
                 <input id="ipAddress" type="text" placeholder="https://123.122.1.2"/>
 
@@ -47,19 +64,15 @@
                 <input id="port" type="text" placeholder=":8080"/>
             </div>
         </div>
-        <button @click="createAccount()"> Create my account </button>
+        <br/>
+        And go to the <a v-link="{ path: '/lobby' }">Lobby</a>
     </div>
 </template>
 
 <script type="text/babel">
-    import Vue from 'vue'
-
-    Vue.transition('flipy', {
-        enterClass: 'flipInX',
-        leaveClass: 'flipOutX'
-    });
 
     export default {
+        props: ['store'],
         data () {
             return {
                 displayGogo: true,

@@ -14,6 +14,7 @@
 <script type="text/babel">
 
     export default {
+        props: ['store'],
         data () {
             return {
                 title: 'Host a Table'

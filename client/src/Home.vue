@@ -2,39 +2,33 @@
     <div id="home">
         <div id="header">
             <a v-link="{ path: '/' }">Home</a>
-            Clicked: {{ count }} times
-            <button @click="increment">+</button>
-            <button @click="decrement">-</button>
-            {{ obj.thing1 }}
-            Add Player: <input v-model='newPlayerName' @keyup.enter='addPlayer'>
+            <!--Add Player: <input v-model='newPlayerName' @keyup.enter='addPlayer'>-->
             <button @click="gotoTabletop()">gotoTabletop</button>
-            <span v-if="!loggedIn">
+            <span v-if="!this.store.loggedIn">
                     <a v-link="{ path: 'register' }">register</a>
                     or <a v-link="{ path: 'login' }">log in</a>
             </span>
             <span v-else>
                     <a v-link="{ path: 'lobby' }">lobby</a>
+                    <a v-link="{ path: 'profile' }">profile</a>
                     <a v-link="{ path: 'logout' }">sign out</a>
             </span>
         </div>
 
         <div id="stage">
-            <router-view :count='count' :obj='obj' :players='players'></router-view>
+            <router-view :store="store"></router-view>
         </div>
     </div>
 </template>
 
 <script type="text/babel">
     import Splash from './components/Splash'
+    import Vue from 'vue'
 
-    export default {
+    let store = new Vue({
         data () {
             return {
                 loggedIn: false,
-                count: '23',
-                destination: '',
-                obj: {thing1: 'obj.prop'},
-                newPlayerName: '',
                 players: [
                     {
                         'name': 'Jim',
@@ -85,6 +79,36 @@
                         'betting': 0
                     }
                 ]
+            };
+        },
+        methods: {
+            login () {
+                this.loggedIn = true;
+            },
+            logout () {
+                this.loggedIn = false;
+            },
+//            addPlayer: function () {
+//                let playerName = this.newPlayerName.trim()
+//                if (playerName) {
+//                    this.players.push({
+//                        'name': playerName,
+//                        'dealer': false,
+//                        'avatar': '../assets/cav.png',
+//                        'bones': parseInt(Math.random() * 1000),
+//                        'betting': 0,
+//                    });
+//                    this.newPlayerText = '';
+//                }
+//            }
+        }
+    });
+
+    export default {
+        data () {
+            return {
+                store: store,
+                destination: '',
             }
         },
         components: {
@@ -100,25 +124,6 @@
             },
             nav: function (route) {
                 this.$route.router.go('/' + this.destination);
-            },
-            increment: function () {
-                this.count++;
-            },
-            decrement: function () {
-                this.count--;
-            },
-            addPlayer: function () {
-                let playerName = this.newPlayerName.trim()
-                if (playerName) {
-                    this.players.push({
-                        'name': playerName,
-                        'dealer': false,
-                        'avatar': '../assets/cav.png',
-                        'bones': parseInt(Math.random() * 1000),
-                        'betting': 0,
-                    });
-                    this.newPlayerText = '';
-                }
             }
         }
     }

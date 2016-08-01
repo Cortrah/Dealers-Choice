@@ -13,7 +13,6 @@
         data () {
             return {
                 title: 'Casual Card Table',
-                inputMessage: 'ok'
             }
         }
     }

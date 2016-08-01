@@ -24,14 +24,9 @@
 </template>
 
 <script type="text/babel">
-    import Vue from 'vue'
-
-    Vue.transition('flipy', {
-       enterClass: 'flipInX',
-       leaveClass: 'flipOutX'
-    });
 
     export default {
+        props: ['store'],
         data () {
             return {
                 displayGogo: true,
@@ -41,14 +36,7 @@
                 games: [
                     { name: 'Cort\'s Table' }
                 ],
-                players: [
-                    { name: 'Jim' },
-                    { name: 'Whitey' },
-                    { name: 'Dan' },
-                    { name: 'Kyle' },
-                    { name: 'Bob' },
-                    { name: 'Cort' }
-                ]
+                players: this.store.players
             }
         },
         methods: {

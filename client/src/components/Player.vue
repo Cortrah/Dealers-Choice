@@ -6,16 +6,16 @@
             </span>
             {{ name }} : {{ betting }}
         </div>
-        <img class="avatar" v-bind:src="avatar">
+        <img class="avatar" :src="avatar">
         <div class="bones">
             {{ bones }}
         </div>
-        <button v-on:click='check()'>check</button>
-        <button v-on:click='call()'>call</button>
-        <button v-on:click='fold()'>fold</button>
+        <button @click='check()'>check</button>
+        <button @click='call()'>call</button>
+        <button @click='fold()'>fold</button>
         <input class="betInput" v-model='betAmmount' v-on:keyup.enter='bet'>
-        <button v-on:click='bet()'>bet</button>
-        <button v-on:click='raise()'>raise</button>
+        <button @click='bet()'>bet</button>
+        <button @click='raise()'>raise</button>
     </div>
 </template>
 

@@ -22,14 +22,9 @@
 </template>
 
 <script type="text/babel">
-    import Vue from 'vue'
-
-    Vue.transition('flipy', {
-        enterClass: 'flipInX',
-        leaveClass: 'flipOutX'
-    });
 
     export default {
+        props: ['store'],
         data () {
             return {
                 sent: false,

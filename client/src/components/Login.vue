@@ -1,6 +1,6 @@
 <template>
     <div id="stage">
-        <h1>Log In</h1>
+        <h1>{{ title }}</h1>
         <label>Username or email</label>
         <br/>
         <input id="userName" type="text"/>
@@ -20,26 +20,18 @@
 </template>
 
 <script type="text/babel">
-    import Vue from 'vue'
-
-    Vue.transition('flipy', {
-       enterClass: 'flipInX',
-       leaveClass: 'flipOutX'
-    });
 
     export default {
+        props: ['store'],
         data () {
             return {
-                displayGogo: true,
-                msg: 'Casual Card Table'
+                title: 'Log In'
             }
         },
         methods: {
-            toggleGogo: function (amt) {
-                this.displayGogo = !this.displayGogo;
-            },
             enter: function () {
                 // this.$children;
+                this.store.login();
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
                     {height: 600, onComplete: this.go('lobby')});

@@ -20,7 +20,10 @@
                 <label>Password</label>
                 <input id="password" type="password" placeholder="Password"/>
             </div>
+            <br/>
             <button @click="createAccount()"> Create my account </button>
+            <br/>
+            <br/>
     </div>
 </template>
 
@@ -36,6 +39,7 @@
         methods: {
             createAccount: function () {
                 // this.$children;
+                this.store.login();
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
                     {height: 600, onComplete: this.go('profile')});
