@@ -13,6 +13,8 @@ Register a player, a player can play by hand
 or he or she can register an ip address and rest interface
 to call for his or her bot that can be written in any language.
 
+
+
 We pass them rules in a json spec for the various games and they implement ai bots to play the games
 If a game isn't covered that bot sits out for that game
 
@@ -58,6 +60,30 @@ else call or fold
 
 else check or bet
 
+
+
+betting begins to the dealers left
+
+check or bet amt adds to currentMatch
+
+if myBet < currentMatch
+	and if raises < maxRaises
+		then call, raise or fold are options
+		where raise is amt up to maxRaise
+	else just call or fold
+else
+	check or bet amt raises < maxRaises up to maxRaise
+
+when everyone has either called or folded or is lastBetter
+then we have a showdown
+
+After showdown
+	winner receives pot ( or ties split pot )
+	if someone is out of bones they are out ( possibly buy in as a b-feature )
+	if all are out
+		declare a winner
+	else
+		increment the dealer
 
 
 Rules Options

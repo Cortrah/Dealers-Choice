@@ -24,6 +24,7 @@
 <script type="text/babel">
 
     export default {
+        name: 'Forgot',
         props: ['store'],
         data () {
             return {

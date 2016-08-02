@@ -7,6 +7,7 @@
                 {{ game.name }} <button  @click="joinGame()">Join</button>
             </li>
         </ul>
+        <button @click="hostGame()"> Host a table </button>
         <h2>Players</h2>
         <ul id="playerList">
             <li v-for="player in players">
@@ -19,13 +20,13 @@
         <input type="text" v-model="message" placeholder="my message">
         <br/>
         <br/>
-        <button @click="hostGame()"> Host a game </button>
     </div>
 </template>
 
 <script type="text/babel">
 
     export default {
+        name: 'Lobby',
         props: ['store'],
         data () {
             return {

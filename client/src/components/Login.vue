@@ -22,10 +22,11 @@
 <script type="text/babel">
 
     export default {
+        name: 'Login',
         props: ['store'],
         data () {
             return {
-                title: 'Log In'
+                title: 'Sign In'
             }
         },
         methods: {
