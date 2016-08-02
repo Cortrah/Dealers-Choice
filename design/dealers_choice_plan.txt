@@ -1,26 +1,14 @@
-Splash.Stage => Game.Stage transition via slots and router add vuex
-
-Then flesh out a complete interface including admin
+flesh out a complete interface including admin for 5 card bluff
 Figure out what's client side and what's server side
 Figure out the admin interface and how the state and rules get passed to the bots
 At any point players can sit out a hand to answer the phone take care of the kids etc
 So the state needs to include everything.
 hub and spoke using hapi as the hub unless everything is client side for testing
 
-To start we'll just stub out
-5 dogs in 5 card bluff
-no responsiveness no security or admin
-a single basic transition from splash to table
-at the table we'll have 5 dogs
-each with a name, a picture, a stack of 500 bones, and a hand
-one marked as the dealer
-A pot in the middle
-As each player bets their ammount is put in front of them and the pot aggregates them
+As each player bets their amount is put in front of them and the pot aggregates them
 Possibly like +20 ^20 5 5 20^30 = 100 (for bet 20 raise 20 pay 5 pay 5 call 20 and raise 30)
 When it's your turn you can check, call or raise the max bet if < max raises
 
-Use discourse as a clubhouse
-Host via AWS
 Register a player, a player can play by hand
 or he or she can register an ip address and rest interface
 to call for his or her bot that can be written in any language.
@@ -46,14 +34,31 @@ A host can force a player to check or fold if need be or set a timer to do so au
 
 Basic Setup
 ================
-A table with x players each with y stacks
-Dealer rotates
+A table with x players
+    each with y stacks
+
+When a host creates a game he can choose a dealer or have one assigned randomly
+
+
+
 Any player can take a game definition copy it, customize it and give it a new name
-When a dealer announces a game
-as the cards are being dealt
+the dealer can press "shuffle as many times as he or she wants"
+The dealer presses "call game"
+he or she is given a set to choose from or customize,
+when the game is selected a screen announces the rules to the others
 the rules appear in an attractive marquee style (rocky and bullwinkle show)
-currentDealer rotates
-chooses a game, shuffles, deals
+when ante's are all in the dealer presses "deal" those players are "in" for the round
+cards are dealt
+betting begins to the dealers left
+check or bet ammmount adds to current match value
+if myBet < currentMatch
+if raises < maxRaises
+then call, raise or fold amount up to maxRaise
+else call or fold
+
+else check or bet
+
+
 
 Rules Options
 +++++++++++++++
