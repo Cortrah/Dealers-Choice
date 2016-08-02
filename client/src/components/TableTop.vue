@@ -1,11 +1,10 @@
 <template>
     <div id="stage">
-        <p>
-            go to the <a v-link="{ path: '/' }">splash page</a>
+        <p id="pot">
+            Pot: <span id="gogo" v-show="displayPot" class='animated' transition="bounce">{{ potValue }}</span>
+            <br/>
+            <button @click='updatePot(20)'>Update Pot</button>
         </p>
-        Join: <input v-model='newPlayerName' @keyup.enter='addPlayer'>
-        <br/>
-        <br/>
         <template v-for='player in players'>
             <player :name="player.name"
                     :avatar="player.avatar"
@@ -13,27 +12,19 @@
                     :dealer="player.dealer">
             </player>
         </template>
-        <p id="pot">
-            Pot: <span id="gogo" v-show="displayPot" class='animated' transition="bounce">{{ potValue }}</span>
-            <br/>
-            <button @click='updatePot(20)'>Update Pot</button>
-        </p>
     </div>
+    <br/>
+    <br/>
 </template>
 
 <script type="text/babel">
     import Player from './Player'
-    import Vue from 'vue'
-
-    Vue.transition('bouncey', {
-        enterClass: 'bounceIn',
-        leaveClass: 'bounceOut'
-    });
 
     export default {
         el: function () {
             return '#tabletop';
         },
+        props: ['store'],
         components: {
             Player
         },
@@ -41,38 +32,15 @@
             return {
                 _cid: '1',
                 displayPot: false,
-                newPlayerName: '',
                 currentPlayer: 0,
-                players: [
-                    {
-                        'name': 'jo jo',
-                        'dealer': true,
-                        'avatar': '../assets/cav.png',
-                        'bones': 300,
-                        'betting': 60
-                    },
-                    {
-                        'name': 'frankie',
-                        'dealer': false,
-                        'avatar': '../assets/cav.png',
-                        'bones': 600,
-                        'betting': 0
-                    },
-                    {
-                        'name': 'digdug',
-                        'dealer': false,
-                        'avatar': '../assets/cav.png',
-                        'bones': 500,
-                        'betting': 0
-                    }
-                ]
+                players: this.store.players
             }
         },
         computed: {
             potValue: function () {
                 var total = 0;
-                for (var i = 0; i < this.players.length; i++) {
-                    total = total + this.players[i].betting;
+                for (var i = 0; i < this.store.players.length; i++) {
+                    total = total + this.store.players[i].betting;
                 }
                 return total;
             }
@@ -99,19 +67,6 @@
             updatePot: function (amt) {
                 this.players[this.currentPlayer].betting += amt;
                 this.displayPot = !this.displayPot;
-            },
-            addPlayer: function () {
-                let playerName = this.newPlayerName.trim()
-                if (playerName) {
-                    this.players.push({
-                        'name': playerName,
-                        'dealer': false,
-                        'avatar': '../assets/cav.png',
-                        'bones': parseInt(Math.random() * 1000),
-                        'betting': 0,
-                    });
-                    this.newPlayerText = '';
-                }
             }
         }
     }
@@ -120,6 +75,6 @@
 <style>
     #pot {
         align-items: center;
-        height: 100px;
+        height: 40px;
     }
 </style>
