@@ -22,6 +22,7 @@
 <script type="text/babel">
 
     export default {
+        name: 'Player',
         props: ['name', 'bones', 'betting', 'dealer'],
         betAmmount: 0,
         methods: {

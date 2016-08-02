@@ -10,6 +10,7 @@
 <script type="text/babel">
 
     export default {
+        name: 'Splash',
         data () {
             return {
                 title: 'Casual Card Table',

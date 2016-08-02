@@ -6,12 +6,12 @@
             <button @click="gotoTabletop()">gotoTabletop</button>
             <span v-if="!this.store.loggedIn">
                     <a v-link="{ path: 'register' }">register</a>
-                    or <a v-link="{ path: 'login' }">log in</a>
+                    or <a v-link="{ path: 'login' }">sign in</a>
             </span>
             <span v-else>
                     <a v-link="{ path: 'lobby' }">lobby</a>
                     <a v-link="{ path: 'profile' }">profile</a>
-                    <a v-link="{ path: 'logout' }">sign out</a>
+                    <button @click="this.store.logout()">sign out</button>
             </span>
         </div>
 
@@ -25,9 +25,12 @@
     import Splash from './components/Splash'
     import Vue from 'vue'
 
+    let bus = new Vue();
+
     let store = new Vue({
         data () {
             return {
+                bus: bus,
                 loggedIn: false,
                 players: [
                     {
@@ -87,6 +90,7 @@
             },
             logout () {
                 this.loggedIn = false;
+                this.bus.$emit('logout-event');
             },
 //            addPlayer: function () {
 //                let playerName = this.newPlayerName.trim()
@@ -105,8 +109,13 @@
     });
 
     export default {
+        name: 'Home',
+        created () {
+            this.bus.$on('logout-event', this.gotoSplash)
+        },
         data () {
             return {
+                bus: bus,
                 store: store,
                 destination: '',
             }
@@ -115,6 +124,12 @@
             Splash
         },
         methods: {
+            gotoSplash: function () {
+                let elem = document.getElementById('stage');
+                this.destination = 'home';
+                window.TweenMax.to(elem, 0.5,
+                    {height: 300, onComplete: this.nav});
+            },
             gotoTabletop: function () {
                 // this.$children;
                 let elem = document.getElementById('stage');
@@ -122,7 +137,7 @@
                 window.TweenMax.to(elem, 0.5,
                     {height: 600, onComplete: this.nav});
             },
-            nav: function (route) {
+            nav: function () {
                 this.$route.router.go('/' + this.destination);
             }
         }

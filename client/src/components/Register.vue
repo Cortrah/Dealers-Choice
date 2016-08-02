@@ -15,7 +15,7 @@
 
                 <label>Username</label>
                 <input id="userName" v-model="userName"
-                       type="text" placeholder="Mina"/>
+                       type="text"/>
 
                 <label>Password</label>
                 <input id="password" type="password" placeholder="Password"/>
@@ -32,7 +32,7 @@
     export default {
         data () {
             return {
-                userName: 'Mina',
+                userName: '',
                 title: 'Register'
             }
         },

@@ -72,6 +72,7 @@
 <script type="text/babel">
 
     export default {
+        name: 'Profile',
         props: ['store'],
         data () {
             return {
