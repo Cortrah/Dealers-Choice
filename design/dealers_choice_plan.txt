@@ -1,4 +1,4 @@
-flesh out a complete interface including admin for 5 card bluff
+
 Figure out what's client side and what's server side
 Figure out the admin interface and how the state and rules get passed to the bots
 At any point players can sit out a hand to answer the phone take care of the kids etc

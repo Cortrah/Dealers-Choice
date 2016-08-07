@@ -1,7 +1,7 @@
 <template>
     <div id="stage">
         <h1>{{ title }}</h1>
-        <label>Username or email</label>
+        <label>Email</label>
         <br/>
         <input id="userName" type="text"/>
         <br/>
@@ -13,9 +13,7 @@
         <button @click="enter()"> sign in </button> <a v-link="{ path: 'forgot' }">forgot your password?</a>
         <br/>
         <br/>
-        or <a v-link="{ path: 'register' }">register</a>
-        <br/>
-        <br/>
+
     </div>
 </template>
 
