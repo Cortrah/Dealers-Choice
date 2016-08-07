@@ -1,20 +1,21 @@
 <template>
     <div id="stage">
-        <h1>{{ title }}</h1>
-            <div>
-                <label>Email</label>
-                <br/>
-                <input id="email" type="text" placeholder="Email"/>
+        <form class="pure-form pure-form-stacked">
+            <fieldset>
+                <h1>{{ title }}</h1>
+
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="Email">
+
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Password">
                 <br/>
 
-                <label>Password</label>
-                <br/>
-                <input id="password" type="password" placeholder="Password"/>
-            </div>
-            <br/>
-            <button @click="createAccount()"> Create my account </button>
-            <br/>
-            <br/>
+                <button @click="createAccount()"
+                        class="pure-button pure-button-primary">  Create my account  </button>
+
+            </fieldset>
+        </form>
     </div>
 </template>
 
@@ -33,7 +34,7 @@
                 // this.store.login();
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
-                    {height: 600, onComplete: this.go('profile')});
+                    {height: 400, onComplete: this.go('profile')});
             },
             go: function (route) {
                 this.$route.router.go('/' + route);

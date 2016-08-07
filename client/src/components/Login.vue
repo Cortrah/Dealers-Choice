@@ -1,18 +1,26 @@
 <template>
     <div id="stage">
-        <h1>{{ title }}</h1>
-        <label>Email</label>
-        <br/>
-        <input id="userName" type="text"/>
-        <br/>
-        <label>Password</label>
-        <br/>
-        <input id="password" type="password"/>
-        <br/>
-        <br/>
-        <button @click="enter()"> sign in </button> <a v-link="{ path: 'forgot' }">forgot your password?</a>
-        <br/>
-        <br/>
+        <form class="pure-form pure-form-stacked">
+            <fieldset>
+                <h1>{{ title }}</h1>
+
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="Email">
+
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Password">
+
+                <label for="remember" class="pure-checkbox">
+                    <input id="remember" type="checkbox"> Remember me
+                </label>
+                <br/>
+
+                <button @click="enter()"
+                        class="pure-button pure-button-primary"> Sign in </button>
+                <a v-link="{ path: 'forgot' }">forgot your password?</a>
+
+            </fieldset>
+        </form>
 
     </div>
 </template>
@@ -33,7 +41,7 @@
                 this.store.login();
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
-                    {height: 600, onComplete: this.go('lobby')});
+                    {height: 400, onComplete: this.go('lobby')});
             },
             go: function (route) {
                 this.$route.router.go('/' + route);

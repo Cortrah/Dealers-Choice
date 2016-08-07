@@ -7,7 +7,10 @@
         <p>
            invite some players
         </p>
-        <button @click='hostGame()'>Join</button>
+        <button @click='hostGame()'
+                class="pure-button pure-button-primary">
+            Join
+        </button>
     </div>
 </template>
 
@@ -26,7 +29,7 @@
                 // this.$children;
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
-                    {height: 600, onComplete: this.go('tabletop')});
+                    {height: 400, onComplete: this.go('tabletop')});
             },
             go: function (route) {
                 this.$route.router.go('/' + route);

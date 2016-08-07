@@ -1,18 +1,18 @@
 <template>
     <div id="home">
-        <div id="header">
-            <a v-link="{ path: '/' }">Home</a>
-            <!--Add Player: <input v-model='newPlayerName' @keyup.enter='addPlayer'>-->
-            <button @click="gotoTabletop()">gotoTabletop</button>
-            <span v-if="!this.store.loggedIn">
-                    <a v-link="{ path: 'register' }">register</a>
-                    or <a v-link="{ path: 'login' }">sign in</a>
-            </span>
-            <span v-else>
-                    <a v-link="{ path: 'lobby' }">lobby</a>
-                    <a v-link="{ path: 'profile' }">profile</a>
-                    <button @click="this.store.logout()">sign out</button>
-            </span>
+        <div id="header" class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+            <a href="#" class="pure-menu-link pure-menu-heading" v-link="{ path: '/' }">Home</a>
+            <ul class="pure-menu-list">
+                <span v-if="!this.store.loggedIn">
+                    <li class="pure-menu-item"><a href="#" v-link="{ path: 'register' }" class="pure-menu-link">Register</a></li>
+                    <li class="pure-menu-item"><a href="#" v-link="{ path: 'login' }" class="pure-menu-link">Sign In</a></li>
+                </span>
+                <span v-else>
+                    <li class="pure-menu-item"><a href="#" v-link="{ path: 'lobby' }" class="pure-menu-link">Lobby</a></li>
+                    <li class="pure-menu-item"><a href="#" v-link="{ path: 'profile' }" class="pure-menu-link">Profile</a></li>
+                    <li class="pure-menu-item" @click="this.store.logout()"><a href="#" class="pure-menu-link">Sign Out</a></li>
+                </span>
+            </ul>
         </div>
 
         <div id="stage">
@@ -37,7 +37,7 @@
                         'name': 'Jim',
                         'dealer': true,
                         'host': false,
-                        'avatar': '../assets/cav.png',
+                        'avatar': '../assets/dog1.png',
                         'bones': 400,
                         'betting': 60
                     },
@@ -45,7 +45,7 @@
                         'name': 'Whitey',
                         'dealer': false,
                         'host': false,
-                        'avatar': '../assets/cav.png',
+                        'avatar': '../assets/robot1.png',
                         'bones': 400,
                         'betting': 0
                     },
@@ -53,7 +53,7 @@
                         'name': 'Dan',
                         'dealer': false,
                         'host': false,
-                        'avatar': '../assets/cav.png',
+                        'avatar': '../assets/dog2.png',
                         'bones': 400,
                         'betting': 0
                     },
@@ -61,7 +61,7 @@
                         'name': 'Kyle',
                         'dealer': false,
                         'host': false,
-                        'avatar': '../assets/cav.png',
+                        'avatar': '../assets/dog3.png',
                         'bones': 400,
                         'betting': 0
                     },
@@ -69,7 +69,7 @@
                         'name': 'Bob',
                         'dealer': false,
                         'host': false,
-                        'avatar': '../assets/cav.png',
+                        'avatar': '../assets/robot2.png',
                         'bones': 400,
                         'betting': 0
                     },
@@ -77,7 +77,7 @@
                         'name': 'Cort',
                         'dealer': false,
                         'host': true,
-                        'avatar': '../assets/cav.png',
+                        'avatar': '../assets/robot3.png',
                         'bones': 400,
                         'betting': 0
                     }
@@ -135,7 +135,7 @@
                 let elem = document.getElementById('stage');
                 this.destination = 'tabletop';
                 window.TweenMax.to(elem, 0.5,
-                    {height: 600, onComplete: this.nav});
+                    {height: 400, onComplete: this.nav});
             },
             nav: function () {
                 this.$route.router.go('/' + this.destination);
@@ -161,16 +161,14 @@
         position:absolute;
         top:0px;
         left:0px;
-        height:30px;
         width: 100%;
         background-color: #f5f5f5;
     }
 
     #stage {
-        display: inline-block;
-        width: 600px;
         font-family: Source Sans Pro, Helvetica, sans-serif;
-        text-align: center;
+        align-items: left;
+        margin: 20px;
         color: #2c3e50;
         background-color: #f5f5f5;
     }

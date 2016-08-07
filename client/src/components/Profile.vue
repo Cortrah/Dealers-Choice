@@ -1,75 +1,65 @@
 <template>
     <div id="stage">
-        <h1>{{ title }}</h1>
-        <div>
-            <label>Email</label>
-            <br/>
-            <input id="email" type="text" placeholder="Email"/>
-            <br/>
+        <form class="pure-form pure-form-stacked">
+        <fieldset>
 
-            <label>Password</label>
-            <br/>
-            <input id="password" type="password" placeholder="Password"/>
-            <br/>
-            <br/>
-            And go to the <a v-link="{ path: '/lobby' }">Lobby</a>
-        </div>
-        <br/>
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-1-2">
+                    <h1>{{ title }}</h1>
 
-        <div>
-            <label>Username</label>
-            <br/>
-            <input id="userName" v-model="userName"
-                   type="text" placeholder="Mina"/>
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="Email">
 
-            <p>Select a Puppy</p>
-            <div>
-                <label for="checkbox" >
-                    <input id="checkbox" type="checkbox" v-model="botChecked">
-                    Or use a Bot
-                </label>
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="Password">
+
+                    <label for="userName">Username</label>
+                    <input id="userName" v-model="userName"
+                           type="text" placeholder="Mina"/>
+                </div>
+
+                <div class="pure-u-1 pure-u-md-1-2">
+
+                     <div v-if="botChecked">
+                         <img class="avatar" src="../assets/cav.png">
+                         <select v-model="botPicture">
+                             <option selected>Protobot</option>
+                             <option>Streambot</option>
+                             <option>Grammarbot</option>
+                             <option>Lambdabot</option>
+                         </select>
+                         <label for="ipAddress">Ip Address</label>
+                         <input id="ipAddress" type="text" placeholder="https://123.122.1.2"/>
+                         <label for="port">Port</label>
+                         <input id="port" type="text" placeholder=":8080"/>
+                     </div>
+                     <div v-else>
+                        <br/>
+                         <br/>
+                         <br/>
+                         <br/>
+                        <img class="avatar" src="../assets/cav.png">
+                        <select id="pupPicture" v-model="puppyPicture">
+                            <option selected>Cavalier</option>
+                            <option>Mini Schnauser</option>
+                            <option>Boston Terrier</option>
+                            <option>Border Collie</option>
+                        </select>
+                     </div>
+                    <div>
+                        <label for="checkbox" >
+                            <input id="checkbox" type="checkbox" v-model="botChecked">
+                            Or use a Bot
+                        </label>
+                    </div>
+                </div>
+                <button @click="createAccount()"
+                        class="pure-button pure-button-primary">  Goto the Lobby  </button>
             </div>
 
-             <div v-if="botChecked">
-                 <br/>
-                 <img class="avatar" src="../assets/cav.png">
-                 <br/>
-                 <select v-model="botPicture">
-                     <option selected>Protobot</option>
-                     <option>Nodebot</option>
-                     <option>Streambot</option>
-                     <option>Grammarbot</option>
-                     <option>Lambdabot</option>
-                     <option>Eventbot</option>
-                     <option>nullbot</option>
-                 </select>
-                 <br/>
-                 <br/>
-                 <label>Ip Address</label>
-                 <input id="ipAddress" type="text" placeholder="https://123.122.1.2"/>
-                 <br/>
-                 <label>Port</label>
-                 <input id="port" type="text" placeholder=":8080"/>
-                 <br/>
-                 <br/>
-             </div>
-             <div v-else>
-                <img class="avatar" src="../assets/cav.png">
-                <br/>
-                <select v-model="puppyPicture">
-                    <option selected>Cavalier</option>
-                    <option>Pug</option>
-                    <option>Boston Terrier</option>
-                    <option>Neufi</option>
-                    <option>Border Collie</option>
-                    <option>Mini Schnauser</option>
-                    <option>Lab Mix</option>
-                </select>
-                <br/>
-                <br/>
-             </div>
-        </div>
-    </div>
+        </fieldset>
+    </form>
+  </div>
 </template>
 
 <script type="text/babel">
@@ -94,7 +84,7 @@
                 // this.$children;
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
-                    {height: 600, onComplete: this.go('lobby')});
+                    {height: 400, onComplete: this.go('lobby')});
             },
             go: function (route) {
                 this.$route.router.go('/' + route);

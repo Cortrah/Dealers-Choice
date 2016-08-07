@@ -1,23 +1,25 @@
 <template>
     <div id="stage">
-        <h1>{{ title }}</h1>
-        <div v-if="sent">
-            If an account matched that address, an email will be sent with instructions.
-            <br/>
-            <br/>
-        </div>
-        <div v-else>
-            <label>What's your email?</label>
-            <br/>
-            <input id="userName" type="text"/>
-            <br/>
-            <br/>
-            <button @click="reset()"> Send reset </button>
-        </div>
-        <a v-link="{ path: 'login' }">Back to login</a>
-        <br/>
-        <br/>
+        <form class="pure-form pure-form-stacked">
+            <fieldset>
+                <h1>{{ title }}</h1>
+                <div v-if="sent">
+                    <p>
+                    If an account matched that address,
+                    an email will be sent with instructions.
+                    </p>
+                </div>
+                <div v-else>
+                    <label for="email">What's your email?</label>
+                    <input id="email" type="email" placeholder="Email">
+                    <br/>
+                    <button @click="reset()" class="pure-button pure-button-primary"> Send reset </button>
+                </div>
 
+                <br/>
+                <br/>
+            </fieldset>
+        </form>
     </div>
 </template>
 
