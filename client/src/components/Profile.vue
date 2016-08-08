@@ -92,9 +92,3 @@
         }
     }
 </script>
-<style>
-    .avatar {
-        width: 75px;
-        height: 90px
-    }
-</style>

@@ -74,7 +74,7 @@
 
     .avatar {
         height: 100px;
-        width: 80px;
+        width: 100px;
         padding: 5px;
         background-color: #F5F5F5;
     }

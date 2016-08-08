@@ -68,10 +68,3 @@
         }
     }
 </script>
-
-<style>
-    .logo {
-        width: 151px;
-        height: 185px
-    }
-</style>

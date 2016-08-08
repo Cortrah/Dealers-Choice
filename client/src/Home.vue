@@ -189,4 +189,9 @@
         color: #42b983;
         text-decoration: none;
     }
+
+    .avatar {
+        width: 100px;
+        height: 100px
+    }
 </style>
