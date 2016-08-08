@@ -23,7 +23,7 @@
 
     export default {
         name: 'Player',
-        props: ['name', 'bones', 'betting', 'dealer'],
+        props: ['name', 'bones', 'betting', 'dealer', 'avatar'],
         betAmmount: 0,
         methods: {
             check: function () {
@@ -48,11 +48,6 @@
                 this.betting = this.betAmmount;
                 this.$dispatch('fold', this.name);
                 this.betAmmount = '';
-            }
-        },
-        data () {
-            return {
-                'avatar': '/static/img/cav.1e55ea6.png',
             }
         }
     }

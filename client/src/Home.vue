@@ -32,36 +32,48 @@
             return {
                 bus: bus,
                 loggedIn: false,
+                dogAvatars: [
+                    { name: 'frogie', img: 'static/dog1.png' },
+                    { name: 'auogie', img: 'static/dog1.png' },
+                    { name: 'dogie', img: 'static/dog2.png' },
+                    { name: 'Dady', img: 'static/dog3.png' }
+                ],
+                robotAvatars: [
+                    { name: 'protobot', img: 'static/robot0.png' },
+                    { name: 'motobot', img: 'static/robot1.png' },
+                    { name: 'grammarbot', img: 'static/robot2.png' },
+                    { name: 'slammerbot', img: 'static/robot3.png' }
+                ],
                 players: [
                     {
                         'name': 'Jim',
                         'dealer': true,
                         'host': false,
-                        'avatar': '../assets/dog1.png',
-                        'bones': 400,
+                        'avatar': 'static/dog1.png',
+                        'bones': 100,
                         'betting': 60
                     },
                     {
                         'name': 'Whitey',
                         'dealer': false,
                         'host': false,
-                        'avatar': '../assets/robot1.png',
-                        'bones': 400,
+                        'avatar': 'static/robot1.png',
+                        'bones': 200,
                         'betting': 0
                     },
                     {
                         'name': 'Dan',
                         'dealer': false,
                         'host': false,
-                        'avatar': '../assets/dog2.png',
-                        'bones': 400,
+                        'avatar': 'static/dog2.png',
+                        'bones': 300,
                         'betting': 0
                     },
                     {
                         'name': 'Kyle',
                         'dealer': false,
                         'host': false,
-                        'avatar': '../assets/dog3.png',
+                        'avatar': 'static/dog3.png',
                         'bones': 400,
                         'betting': 0
                     },
@@ -69,16 +81,16 @@
                         'name': 'Bob',
                         'dealer': false,
                         'host': false,
-                        'avatar': '../assets/robot2.png',
-                        'bones': 400,
+                        'avatar': 'static/robot2.png',
+                        'bones': 100,
                         'betting': 0
                     },
                     {
                         'name': 'Cort',
                         'dealer': false,
                         'host': true,
-                        'avatar': '../assets/robot3.png',
-                        'bones': 400,
+                        'avatar': 'static/robot3.png',
+                        'bones': 200,
                         'betting': 0
                     }
                 ]

@@ -1,7 +1,10 @@
 <template>
     <div id="stage">
         <p id="pot">
-            Pot: <span id="gogo" v-show="displayPot" class='animated' transition="bounce">{{ potValue }}</span>
+            Pot:
+                <span id="gogo" v-show="displayPot" class='animated' transition="bounce">
+                    {{ potValue }}
+                </span>
             <br/>
             <button @click='updatePot(20)'>Update Pot</button>
         </p>
