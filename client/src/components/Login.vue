@@ -37,14 +37,9 @@
         },
         methods: {
             enter: function () {
-                // this.$children;
+                console.log('about to login');
+                // this.store.bus.$emit('login-event');
                 this.store.login();
-                let elem = document.getElementById('stage');
-                window.TweenMax.to(elem, 0.5,
-                    {height: 400, onComplete: this.go('lobby')});
-            },
-            go: function (route) {
-                this.$route.router.go('/' + route);
             }
         }
     }

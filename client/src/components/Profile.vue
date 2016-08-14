@@ -7,54 +7,78 @@
                 <div class="pure-u-1 pure-u-md-1-2">
                     <h1>{{ title }}</h1>
 
-                    <label for="email">Email</label>
-                    <input id="email" type="email" placeholder="Email">
+                    <label for="email">
+                        Email
+                    </label>
+                    <input id="email"
+                           type="email"
+                           placeholder="Email">
 
-                    <label for="password">Password</label>
-                    <input id="password" type="password" placeholder="Password">
+                    <label for="password">
+                        Password
+                    </label>
+                    <input id="password"
+                           type="password"
+                           placeholder="Password">
 
-                    <label for="userName">Username</label>
-                    <input id="userName" v-model="userName"
-                           type="text" placeholder="Mina"/>
+                    <label for="userName">
+                        Username
+                    </label>
+                    <input id="userName"
+                           v-model="userName"
+                           type="text"
+                           placeholder="Mina"/>
                 </div>
 
                 <div class="pure-u-1 pure-u-md-1-2">
 
                      <div v-if="botChecked">
-                         <img class="avatar" src="../assets/cav.png">
-                         <select v-model="botPicture">
-                             <option selected>Protobot</option>
-                             <option>Streambot</option>
-                             <option>Grammarbot</option>
-                             <option>Lambdabot</option>
+                         <img class="avatar"
+                              :src="selBot"/>
+                         <select v-model="selBot">
+                             <option v-for="bot in bots"
+                                     :value="bot.img">
+                                 {{ bot.name }}
+                             </option>
                          </select>
-                         <label for="ipAddress">Ip Address</label>
-                         <input id="ipAddress" type="text" placeholder="https://123.122.1.2"/>
-                         <label for="port">Port</label>
-                         <input id="port" type="text" placeholder=":8080"/>
+                         <label for="ipAddress">
+                             Ip Address
+                         </label>
+                         <input id="ipAddress"
+                                type="text"
+                                placeholder="https://123.122.1.2"/>
+                         <label for="port">
+                             Port
+                         </label>
+                         <input id="port"
+                                type="text"
+                                placeholder=":8080"/>
                      </div>
+
                      <div v-else>
-                        <br/>
-                         <br/>
-                         <br/>
-                         <br/>
-                        <img class="avatar" src="../assets/cav.png">
-                        <select id="pupPicture" v-model="puppyPicture">
-                            <option selected>Cavalier</option>
-                            <option>Mini Schnauser</option>
-                            <option>Boston Terrier</option>
-                            <option>Border Collie</option>
-                        </select>
+                         <img class="avatar"
+                              :src="selDog"/>
+                         <select v-model="selDog">
+                             <option v-for="dog in dogs"
+                                     :value="dog.img">
+                                 {{ dog.name }}
+                             </option>
+                         </select>
                      </div>
                     <div>
                         <label for="checkbox" >
-                            <input id="checkbox" type="checkbox" v-model="botChecked">
+                            <input id="checkbox"
+                                   type="checkbox"
+                                   v-model="botChecked">
                             Or use a Bot
                         </label>
                     </div>
                 </div>
+
                 <button @click="createAccount()"
-                        class="pure-button pure-button-primary">  Goto the Lobby  </button>
+                        class="pure-button pure-button-primary">
+                    Goto the Lobby
+                </button>
             </div>
 
         </fieldset>
@@ -69,10 +93,10 @@
         props: ['store'],
         data () {
             return {
-                displayGogo: true,
-                puppyPicture: 'Cavalier',
                 userName: 'Mina',
                 botChecked: false,
+                dogs: this.store.dogAvatars,
+                bots: this.store.botAvatars,
                 title: 'Profile'
             }
         },

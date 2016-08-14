@@ -33,16 +33,16 @@
                 bus: bus,
                 loggedIn: false,
                 dogAvatars: [
-                    { name: 'frogie', img: 'static/dog1.png' },
-                    { name: 'auogie', img: 'static/dog1.png' },
-                    { name: 'dogie', img: 'static/dog2.png' },
-                    { name: 'Dady', img: 'static/dog3.png' }
+                    { id: '1', name: 'Cavalier', img: '../static/dog1.png' },
+                    { id: '2', name: 'Mini Schnauser', img: '../static/dog2.png' },
+                    { id: '3', name: 'Boston Terrier', img: '../static/dog3.png' },
+                    { id: '4', name: 'Border Collie', img: '../static/dog4.png' }
                 ],
-                robotAvatars: [
-                    { name: 'protobot', img: 'static/robot0.png' },
-                    { name: 'motobot', img: 'static/robot1.png' },
-                    { name: 'grammarbot', img: 'static/robot2.png' },
-                    { name: 'slammerbot', img: 'static/robot3.png' }
+                botAvatars: [
+                    { id: '1', name: 'Protobot', img: '../static/robot1.png' },
+                    { id: '2', name: 'Streambot', img: '../static/robot2.png' },
+                    { id: '3', name: 'Grammarbot', img: '../static/robot3.png' },
+                    { id: '4', name: 'Lambdabot', img: '../static/robot4.png' }
                 ],
                 players: [
                     {
@@ -99,37 +99,26 @@
         methods: {
             login () {
                 this.loggedIn = true;
+                this.bus.$emit('login-event');
             },
             logout () {
                 this.loggedIn = false;
                 this.bus.$emit('logout-event');
-            },
-//            addPlayer: function () {
-//                let playerName = this.newPlayerName.trim()
-//                if (playerName) {
-//                    this.players.push({
-//                        'name': playerName,
-//                        'dealer': false,
-//                        'avatar': '../assets/cav.png',
-//                        'bones': parseInt(Math.random() * 1000),
-//                        'betting': 0,
-//                    });
-//                    this.newPlayerText = '';
-//                }
-//            }
+            }
         }
     });
 
     export default {
         name: 'Home',
         created () {
-            this.bus.$on('logout-event', this.gotoSplash)
+            this.bus.$on('logout-event', this.gotoSplash);
+            this.bus.$on('login-event', this.gotoLobby);
         },
         data () {
             return {
                 bus: bus,
                 store: store,
-                destination: '',
+                destination: ''
             }
         },
         components: {
@@ -139,6 +128,13 @@
             gotoSplash: function () {
                 let elem = document.getElementById('stage');
                 this.destination = 'home';
+                window.TweenMax.to(elem, 0.5,
+                    {height: 300, onComplete: this.nav});
+            },
+            gotoLobby: function () {
+
+                let elem = document.getElementById('stage');
+                this.destination = 'lobby';
                 window.TweenMax.to(elem, 0.5,
                     {height: 300, onComplete: this.nav});
             },
