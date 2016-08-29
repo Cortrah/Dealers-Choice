@@ -132,7 +132,6 @@
                     {height: 300, onComplete: this.nav});
             },
             gotoLobby: function () {
-
                 let elem = document.getElementById('stage');
                 this.destination = 'lobby';
                 window.TweenMax.to(elem, 0.5,
