@@ -19,6 +19,14 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     port: 8080,
-    proxyTable: {}
+    proxyTable: {
+      '/hapi': {
+        target: 'http://pumpkin.local:8000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/hapi' : ''
+        }
+      }
+    }
   }
 }

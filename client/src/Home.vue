@@ -110,6 +110,12 @@
 
     export default {
         name: 'Home',
+        http: {
+          root: 'http://localhost:8080/',
+          headers: {
+              Authorization: 'Basic NTdkMDZkZTAxOTcyMGY2NjVjNWY3ZmJkOmU0NDJjNjhlLTkwNWEtNGQ0Mi04ODQ0LWU2ZDM0YzYxZmJjNg=='
+          }
+        },
         created () {
             this.bus.$on('logout-event', this.gotoSplash);
             this.bus.$on('login-event', this.gotoLobby);

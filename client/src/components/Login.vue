@@ -16,7 +16,13 @@
                 <br/>
 
                 <button @click="enter()"
-                        class="pure-button pure-button-primary"> Sign in </button>
+                        class="pure-button pure-button-primary">
+                    Sign in
+                </button>
+                <button @click="login()"
+                        class="pure-button pure-button-primary">
+                    Login
+                </button>
                 <a v-link="{ path: 'forgot' }">forgot your password?</a>
 
             </fieldset>
@@ -37,9 +43,29 @@
         },
         methods: {
             enter: function () {
-                console.log('about to login');
+                console.log('about to get root');
                 // this.store.bus.$emit('login-event');
-                this.store.login();
+                this.$http.get('/hapi', {
+                    username: 'cort@cortwinters.net',
+                    password: 'Octofish#8'}).then(
+                    (response) => {
+                            console.log(response);
+                            // alert('ok');
+                            // this.store.login();
+                    }, (response) => {
+                        // error
+                });
+            },
+            login: function () {
+                console.log('trying to login');
+                this.$http.post('/hapi/api/login', {
+                    username: 'cort@cortwinters.net',
+                    password: 'Octofish#8'}).then(
+                    (response) => {
+                        console.log(response);
+                    }, (response) => {
+                        console.log(response);
+                    });
             }
         }
     }

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 
 import Splash from './components/Splash'
 import Register from './components/Register'
@@ -10,7 +11,9 @@ import Profile from './components/Profile'
 import Forgot from './components/Forgot'
 import Host from './components/Host'
 
+
 Vue.use(VueRouter)
+Vue.use(VueResource)
 
 let router = new VueRouter()
 
