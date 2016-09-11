@@ -11,6 +11,10 @@
         <button @click="hostGame()"> Host a table </button>
         <br/>
         <br/>
+        <button @click="getUsers()"
+                class="pure-button pure-button-primary">
+            get users
+        </button>
     </div>
 </template>
 
@@ -42,6 +46,20 @@
             },
             go: function (route) {
                 this.$route.router.go('/' + route);
+            },
+            getUsers: function () {
+                this.$http.get('/hapi/api/accounts', {
+                    headers: {
+                        username: window.sessionStorage.getItem('sessionId'),
+                        password: window.sessionStorage.getItem('sessionKey'),
+                        authorization: window.sessionStorage.getItem('authHeader'),
+                    }
+                }).then(
+                    (response) => {
+                        console.log(response);
+                    }, (response) => {
+                        console.log(response);
+                    });
             }
         }
     }

@@ -44,4 +44,9 @@ router.map({
     }
 })
 
+// redirect to splash if a route is unmatched
+router.redirect({
+  '*': '/'
+})
+
 export default router

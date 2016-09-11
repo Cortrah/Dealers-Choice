@@ -97,28 +97,25 @@
             };
         },
         methods: {
-            login () {
-                this.loggedIn = true;
-                this.bus.$emit('login-event');
-            },
-            logout () {
-                this.loggedIn = false;
-                this.bus.$emit('logout-event');
-            }
+            // login () {
+            //     this.loggedIn = true;
+            //     this.bus.$emit('login-event');
+            // },
+            // logout () {
+            //     this.loggedIn = false;
+            //     this.bus.$emit('logout-event');
+            // }
         }
     });
 
     export default {
         name: 'Home',
         http: {
-          root: 'http://localhost:8080/',
-          headers: {
-              Authorization: 'Basic NTdkMDZkZTAxOTcyMGY2NjVjNWY3ZmJkOmU0NDJjNjhlLTkwNWEtNGQ0Mi04ODQ0LWU2ZDM0YzYxZmJjNg=='
-          }
+          root: 'http://localhost:8080/'
         },
         created () {
-            this.bus.$on('logout-event', this.gotoSplash);
-            this.bus.$on('login-event', this.gotoLobby);
+            this.bus.$on('logout-event', this.logout);
+            this.bus.$on('login-event', this.login);
         },
         data () {
             return {
@@ -131,6 +128,18 @@
             Splash
         },
         methods: {
+            logout: function () {
+                window.sessionStorage.setItem('authHeader', '');
+                window.sessionStorage.setItem('sessionId', '');
+                window.sessionStorage.setItem('sessionKey', '');
+                this.gotoSplash();
+            },
+            login: function (credentials) {
+                window.sessionStorage.setItem('authHeader', credentials.authHeader);
+                window.sessionStorage.setItem('sessionId', credentials.sessionId);
+                window.sessionStorage.setItem('sessionKey', credentials.sessionKey);
+                this.gotoLobby();
+            },
             gotoSplash: function () {
                 let elem = document.getElementById('stage');
                 this.destination = 'home';
@@ -138,10 +147,11 @@
                     {height: 300, onComplete: this.nav});
             },
             gotoLobby: function () {
+                // this.$children;
                 let elem = document.getElementById('stage');
                 this.destination = 'lobby';
                 window.TweenMax.to(elem, 0.5,
-                    {height: 300, onComplete: this.nav});
+                    {height: 400, onComplete: this.nav});
             },
             gotoTabletop: function () {
                 // this.$children;
