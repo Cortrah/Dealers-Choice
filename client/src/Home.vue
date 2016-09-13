@@ -3,14 +3,14 @@
         <div id="header" class="pure-menu pure-menu-horizontal pure-menu-scrollable">
             <a href="#" class="pure-menu-link pure-menu-heading" v-link="{ path: '/' }">Home</a>
             <ul class="pure-menu-list">
-                <span v-if="!this.store.loggedIn">
+                <span v-if="!this.loggedIn">
                     <li class="pure-menu-item"><a href="#" v-link="{ path: 'register' }" class="pure-menu-link">Register</a></li>
                     <li class="pure-menu-item"><a href="#" v-link="{ path: 'login' }" class="pure-menu-link">Sign In</a></li>
                 </span>
                 <span v-else>
                     <li class="pure-menu-item"><a href="#" v-link="{ path: 'lobby' }" class="pure-menu-link">Lobby</a></li>
                     <li class="pure-menu-item"><a href="#" v-link="{ path: 'profile' }" class="pure-menu-link">Profile</a></li>
-                    <li class="pure-menu-item" @click="this.store.logout()"><a href="#" class="pure-menu-link">Sign Out</a></li>
+                    <li class="pure-menu-item" @click="this.LOGOUT_REQUEST()"><a href="#" class="pure-menu-link">Sign Out</a></li>
                 </span>
             </ul>
         </div>
@@ -31,7 +31,6 @@
         data () {
             return {
                 bus: bus,
-                loggedIn: false,
                 dogAvatars: [
                     { id: '1', name: 'Cavalier', img: '../static/dog1.png' },
                     { id: '2', name: 'Mini Schnauser', img: '../static/dog2.png' },
@@ -93,14 +92,14 @@
                         'bones': 200,
                         'betting': 0
                     }
-                ]
+                ],
+                tables: []
             };
         },
         methods: {
-            // login () {
-            //     this.loggedIn = true;
-            //     this.bus.$emit('login-event');
-            // },
+             createTable (tableName) {
+                 this.tables.push({ name: tableName });
+             },
             // logout () {
             //     this.loggedIn = false;
             //     this.bus.$emit('logout-event');
@@ -114,13 +113,18 @@
           root: 'http://localhost:8080/'
         },
         created () {
-            this.bus.$on('logout-event', this.logout);
-            this.bus.$on('login-event', this.login);
+            this.bus.$on('login-request', this.LOGIN_REQUEST);
+            this.bus.$on('login-result', this.LOGIN_RESULT);
+            this.bus.$on('logout-request', this.LOGOUT_REQUEST);
+            this.bus.$on('logout-result', this.LOGOUT_RESULT);
+            this.bus.$on('get-accounts-request', this.getAccounts);
         },
         data () {
             return {
                 bus: bus,
                 store: store,
+                loggedIn: false,
+                loginInfo: {},
                 destination: ''
             }
         },
@@ -128,17 +132,62 @@
             Splash
         },
         methods: {
-            logout: function () {
-                window.sessionStorage.setItem('authHeader', '');
-                window.sessionStorage.setItem('sessionId', '');
-                window.sessionStorage.setItem('sessionKey', '');
+            LOGIN_REQUEST: function (formData) {
+                this.$http.post('/hapi/api/login', {
+                        username: formData.username,
+                        password: formData.password
+                    }).then(
+                        (response) => {
+                            this.loginInfo = response.body;
+                            this.store.bus.$emit('login-result');
+                        }, (error) => {
+                            console.log(error);
+                            // perhaps give a nice error message and customize login page
+                            // for now go to splash just to mark that a change has happened
+                            this.gotoSplash();
+                        });
+            },
+            LOGIN_RESULT: function () {
+                this.loggedIn = true;
+                this.gotoLobby();
+            },
+            LOGOUT_REQUEST: function () {
+                this.$http.delete('/hapi/api/logout', {
+                    headers: {
+                        username: this.loginInfo.session._id,
+                        password: this.loginInfo.session.key,
+                        authorization: this.loginInfo.authHeader,
+                    }
+                }).then(
+                    (response) => {
+                        this.store.bus.$emit('logout-result');
+                    }, (error) => {
+                        // either retry or emit logout-result regardless
+                        // and let the server side session timeout?
+                        console.log(error);
+                        this.store.bus.$emit('logout-result');
+                    });
+            },
+            LOGOUT_RESULT: function () {
+                this.loginInfo = {};
+                this.loggedIn = false;
                 this.gotoSplash();
             },
-            login: function (credentials) {
-                window.sessionStorage.setItem('authHeader', credentials.authHeader);
-                window.sessionStorage.setItem('sessionId', credentials.sessionId);
-                window.sessionStorage.setItem('sessionKey', credentials.sessionKey);
-                this.gotoLobby();
+            getAccounts: function () {
+                this.$http.get('/hapi/api/accounts', {
+                    headers: {
+                        username: this.loginInfo.session._id,
+                        password: this.loginInfo.session.key,
+                        authorization: this.loginInfo.authHeader,
+                    }
+                }).then(
+                    (response) => {
+                        console.log(response);
+                        this.gotoLobby();
+                    }, (error) => {
+                        console.log(error);
+                        this.gotoSplash();
+                    });
             },
             gotoSplash: function () {
                 let elem = document.getElementById('stage');

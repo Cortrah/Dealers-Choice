@@ -95,6 +95,8 @@
             return {
                 userName: 'Mina',
                 botChecked: false,
+                selDog: this.store.dogAvatars[0].img,
+                selBot: this.store.botAvatars[0].img,
                 dogs: this.store.dogAvatars,
                 bots: this.store.botAvatars,
                 title: 'Profile'

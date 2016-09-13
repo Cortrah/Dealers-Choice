@@ -45,22 +45,11 @@
         },
         methods: {
             login: function () {
-                this.$http.post('/hapi/api/login', {
+                let formData = {
                     username: this.email,
-                    password: this.pwd}).then(
-                    (response) => {
-                        this.authHeader = response.body.authHeader;
-                        this.sessionId = response.body.session._id;
-                        this.sessionKey = response.body.session.key;
-                        let credentials = {
-                            authHeader: this.authHeader,
-                            sessionId: this.sessionId,
-                            sessionKey: this.sessionKey
-                        };
-                        this.store.bus.$emit('login-event', credentials);
-                    }, (response) => {
-                        console.log(response);
-                    });
+                    password: this.pwd
+                };
+                this.store.bus.$emit('login-request', formData);
             }
         }
     }

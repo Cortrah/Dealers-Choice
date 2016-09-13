@@ -4,11 +4,12 @@
 
         <h2>Tables</h2>
         <ul id="gameList">
-            <li v-for="game in games">
-                {{ game.name }} <button  @click="joinGame()">Join</button>
+            <li v-for="table in tables">
+                {{ table.name }} <button  @click="joinTable()">Join</button>
             </li>
         </ul>
-        <button @click="hostGame()"> Host a table </button>
+        <p v-if="tables.length == 0">No Tables Yet</p>
+        <button @click="hostTable()"> Host a table </button>
         <br/>
         <br/>
         <button @click="getUsers()"
@@ -26,19 +27,17 @@
         data () {
             return {
                 title: 'Lobby',
-                games: [
-                    { name: 'Cort\'s Table' }
-                ],
+                tables: this.store.tables,
             }
         },
         methods: {
-            joinGame: function () {
+            joinTable: function () {
                 // this.$children;
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
                     {height: 400, onComplete: this.go('tabletop')});
             },
-            hostGame: function () {
+            hostTable: function () {
                 // this.$children;
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,
@@ -48,18 +47,7 @@
                 this.$route.router.go('/' + route);
             },
             getUsers: function () {
-                this.$http.get('/hapi/api/accounts', {
-                    headers: {
-                        username: window.sessionStorage.getItem('sessionId'),
-                        password: window.sessionStorage.getItem('sessionKey'),
-                        authorization: window.sessionStorage.getItem('authHeader'),
-                    }
-                }).then(
-                    (response) => {
-                        console.log(response);
-                    }, (response) => {
-                        console.log(response);
-                    });
+                this.store.bus.$emit('get-accounts-request');
             }
         }
     }
