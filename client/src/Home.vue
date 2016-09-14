@@ -24,6 +24,7 @@
 <script type="text/babel">
     import Splash from './components/Splash'
     import Vue from 'vue'
+    import DealersChoiceTable from './models/DealersChoiceTable'
 
     let bus = new Vue();
 
@@ -98,7 +99,7 @@
         },
         methods: {
              createTable (tableName) {
-                 this.tables.push({ name: tableName });
+                 this.tables.push(new DealersChoiceTable(tableName));
              },
             // logout () {
             //     this.loggedIn = false;

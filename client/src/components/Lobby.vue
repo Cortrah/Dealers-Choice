@@ -12,10 +12,6 @@
         <button @click="hostTable()"> Host a table </button>
         <br/>
         <br/>
-        <button @click="getUsers()"
-                class="pure-button pure-button-primary">
-            get users
-        </button>
     </div>
 </template>
 
@@ -45,9 +41,6 @@
             },
             go: function (route) {
                 this.$route.router.go('/' + route);
-            },
-            getUsers: function () {
-                this.store.bus.$emit('get-accounts-request');
             }
         }
     }

@@ -1,0 +1,74 @@
+﻿Registration
+  player registers
+  player fils out profile (or gets defaults)
+  player goes to lobby
+  or player logs in at a later date
+
+Lobby
+  join an existing table as a player
+  or host a new table with a tableType and options
+
+TableType
+	name: "Dealers Choice Poker",
+	rules: {games: ['Five Card Bluff':{...}, 'Five Card Draw':{...}]},
+	minPlayers: 2,
+	maxPlayers: 8,
+	startingBones: 400,
+	sittingRules: "FREESTYLE",
+	status: 'CONFIGURING', 'INVITING_PLAYERS', 'PLAYING*TABLE','DONE'
+	banker: user_id,
+	host: user_id,
+  tables: []
+
+Table
+  host: user_id,
+  banker: user_id, // host is banker by default
+  dealer: user_id, // chosen randomly by default
+  game: {name:'Five Card Bluff', ...},
+  states: ['CHOOSING_GAME','ANTE', ... // from game rules for TurnSequence
+  status: "CHOOSING_GAME"
+  pot: 0,
+  topBet: 0,
+  currentPlayer: user_id,
+  maxRaises: 3			           // computed from game
+  maxAmount: "DOUBLE_ANTE", 	 // computed from game
+  raiseCount: 0,
+  possibleActions: [],
+  players
+    player
+      name: "",
+    	avatar: "url",
+      isDealer = true or false
+      bones: 400,
+      status: "IN" or "OUT"
+      currentBet: 0,
+      hand
+          5 cards sorted, primary rank, secondary rank
+
+host begins play
+  a dealer is assigned randomly and announced
+  dealer chooses and configures a game
+	name: "5 card bluff",
+	description: "standard poker rules with 5 cards and one round of betting... "
+	maxBet: DOUBLE_ANTE,
+	maxRaises: 3,
+	wildcards: []
+  TurnSequence Begins
+    rules are displayed and ante's are asked for
+    dealer shuffles and deals the cards which locks out anyone who hasn't ante'd up
+    1 round of betting begins at dealers left,
+	currentPlayer rotates
+	check, call, fold or bet and raise X,(double ante max, 3 raises max)
+    showdown triggered
+    showdown results announced
+    pot allocation shown
+    deal rotates
+
+Games
+	name: 'Five Card Bluff'
+	cards - standard deck , no joker
+	hands - 5 cards, poker ranks
+      rules - hand showdown (vs trick based)
+	score - bones (vs points, formula for scoring)
+	turnSequence: [ 'ANTE', 'DEAL 5', 'BETTING', 'SHOWDOWN' ]
+Betting has it's own sequence for each player and what actions are allowed
