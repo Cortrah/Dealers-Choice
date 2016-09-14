@@ -1,0 +1,109 @@
+flesh out a complete interface including admin for 5 card bluff
+Figure out what's client side and what's server side
+Figure out the admin interface and how the state and rules get passed to the bots
+At any point players can sit out a hand to answer the phone take care of the kids etc
+So the state needs to include everything.
+hub and spoke using hapi as the hub unless everything is client side for testing
+
+As each player bets their amount is put in front of them and the pot aggregates them
+Possibly like +20 ^20 5 5 20^30 = 100 (for bet 20 raise 20 pay 5 pay 5 call 20 and raise 30)
+When it's your turn you can check, call or raise the max bet if < max raises
+
+Register a player, a player can play by hand
+or he or she can register an ip address and rest interface
+to call for his or her bot that can be written in any language.
+
+We pass them rules in a json spec for the various games and they implement ai bots to play the games
+If a game isn't covered that bot sits out for that game
+
+We validate inputs and outputs and referee the games and track results
+We can do analasis on the ai's and look for patterns, flaws and strengths of different appoaches.
+Talky voice chat with a text chat backup
+
+Admin and hosting features
+================
+A host can schedule a game on a calendar, invite players, manage a clubhouse, assign a banker
+A host can choose the games available to a table.
+A host can enforce that each game is played for a round of deals or freestyle.
+A banker can give  a player chips either during a game or outside of a game
+The system tracks transfers for them
+A host can restrict a table to a set number of games
+A host can make a table freestyle or full rounds,
+or specify full rounds just for some games (those with dealer advantages)
+A host can force a player to check or fold if need be or set a timer to do so automatically, with faster repeating.
+
+Basic Setup
+================
+A table with x players
+    each with y stacks
+
+When a host creates a game he can choose a dealer or have one assigned randomly
+
+
+
+Any player can take a game definition copy it, customize it and give it a new name
+the dealer can press "shuffle as many times as he or she wants"
+The dealer presses "call game"
+he or she is given a set to choose from or customize,
+when the game is selected a screen announces the rules to the others
+the rules appear in an attractive marquee style (rocky and bullwinkle show)
+when ante's are all in the dealer presses "deal" those players are "in" for the round
+cards are dealt
+betting begins to the dealers left
+check or bet ammmount adds to current match value
+if myBet < currentMatch
+if raises < maxRaises
+then call, raise or fold amount up to maxRaise
+else call or fold
+
+else check or bet
+
+
+
+Rules Options
++++++++++++++++
+Wild Cards - a group of
+	Any Individual Card "QH"
+	Any Face Value "2's"
+	Lowest Card in hand
+
+ante: 2 bones
+max bet: DOUBLE_ANTE, POT_LIMIT or NO_LIMIT;
+max raises: 3, NO_MAX
+
+================
+Five Card Bluff
+================
+ante 2 bones
+deal 5 rounds
+bet 1 round (check, bet, call, raise, fold)
+currentBetter rotates
+max bet 2x ante
+max # raises = 3
+showdown
+
+================
+Five Card Draw
+================
+ante 2 bones
+deal 5 rounds
+bet 1 round
+max bet 2x ante
+max # raises = 3
+exchange up to three cards
+bet 1 round
+showdown
+
+Five Card Stud
+Jacks or Better
+Jacks or Better, Trips to win
+Seven Card Stud
+Seven Card High-Low
+Texas Hold-em
+Acey Deucy
+Black Maraiah
+Guts
+Man or Mouse
+The Wrecking Ball
+Wild Cards
+Seven Card Pass-em
