@@ -5,7 +5,7 @@
         <h2>Tables</h2>
         <ul id="gameList">
             <li v-for="table in tables">
-                {{ table.name }} <button  @click="joinTable()">Join</button>
+                {{ table.name }} <button  @click="joinTable(table)">Join</button>
             </li>
         </ul>
         <p v-if="tables.length == 0">No Tables Yet</p>
@@ -27,7 +27,7 @@
             }
         },
         methods: {
-            joinTable: function () {
+            joinTable: function (table) {
                 // this.$children;
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,

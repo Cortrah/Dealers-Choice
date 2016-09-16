@@ -11,6 +11,8 @@ import Profile from './components/Profile'
 import Forgot from './components/Forgot'
 import Host from './components/Host'
 
+import Card from './components/Card'
+import Catelog from './Catelog'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -41,6 +43,12 @@ router.map({
     },
     '/forgot': {
         component: Forgot
+    },
+    '/catelog': {
+      component: Catelog
+    },
+    '/card': {
+      component: Card
     }
 })
 

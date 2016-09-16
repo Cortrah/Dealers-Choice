@@ -12,6 +12,8 @@ module.exports = {
     // add your custom rules here
     'rules': {
         'comma-dangle': 'off',
+        'no-undef': 'off',
+        'no-unused-vars': 'off',
         'indent': 'off',
         'no-multiple-empty-lines': 'off',
         'semi': 'off',
