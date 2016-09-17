@@ -24,6 +24,8 @@
             return {
                 title: 'Lobby',
                 tables: this.store.tables,
+                players: this.store.players,
+                messages: this.store.messages
             }
         },
         methods: {

@@ -4,7 +4,7 @@
         <fieldset>
 
             <div class="pure-g">
-                <div class="pure-u-1 pure-u-md-1-2">
+                <div class="pure-u-1 pure-u-md-1-3">
                     <h1>{{ title }}</h1>
 
                     <label for="email">
@@ -30,32 +30,8 @@
                            placeholder="Mina"/>
                 </div>
 
-                <div class="pure-u-1 pure-u-md-1-2">
-
-                     <div v-if="botChecked">
-                         <img class="avatar"
-                              :src="selBot"/>
-                         <select v-model="selBot">
-                             <option v-for="bot in bots"
-                                     :value="bot.img">
-                                 {{ bot.name }}
-                             </option>
-                         </select>
-                         <label for="ipAddress">
-                             Ip Address
-                         </label>
-                         <input id="ipAddress"
-                                type="text"
-                                placeholder="https://123.122.1.2"/>
-                         <label for="port">
-                             Port
-                         </label>
-                         <input id="port"
-                                type="text"
-                                placeholder=":8080"/>
-                     </div>
-
-                     <div v-else>
+                <div class="pure-u-1 pure-u-md-1-3">
+                     <div v-if="!botChecked" >
                          <img class="avatar"
                               :src="selDog"/>
                          <select v-model="selDog">
@@ -73,6 +49,29 @@
                             Or use a Bot
                         </label>
                     </div>
+                </div>
+
+                <div v-if="botChecked" class="pure-u-1 pure-u-md-1-3">
+                    <img class="avatar"
+                         :src="selBot"/>
+                    <select v-model="selBot">
+                        <option v-for="bot in bots"
+                                :value="bot.img">
+                            {{ bot.name }}
+                        </option>
+                    </select>
+                    <label for="ipAddress">
+                        Ip Address
+                    </label>
+                    <input id="ipAddress"
+                           type="text"
+                           placeholder="https://123.122.1.2"/>
+                    <label for="port">
+                        Port
+                    </label>
+                    <input id="port"
+                           type="text"
+                           placeholder=":8080"/>
                 </div>
 
                 <button @click="createAccount()"

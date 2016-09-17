@@ -21,7 +21,93 @@
 </template>
 
 <script type="text/babel">
+    import Vue from 'vue'
     import Player from './Player'
+    import DealersChoiceTable from './DealersChoiceTable'
+
+    let bus = new Vue();
+
+    let store = new Vue({
+        data () {
+            return {
+                bus: bus,
+                dogAvatars: [
+                    { id: '1', name: 'Cavalier', img: '../static/dog1.png' },
+                    { id: '2', name: 'Mini Schnauser', img: '../static/dog2.png' },
+                    { id: '3', name: 'Boston Terrier', img: '../static/dog3.png' },
+                    { id: '4', name: 'Border Collie', img: '../static/dog4.png' }
+                ],
+                botAvatars: [
+                    { id: '1', name: 'Protobot', img: '../static/robot1.png' },
+                    { id: '2', name: 'Streambot', img: '../static/robot2.png' },
+                    { id: '3', name: 'Grammarbot', img: '../static/robot3.png' },
+                    { id: '4', name: 'Lambdabot', img: '../static/robot4.png' }
+                ],
+                players: [
+                    {
+                        'name': 'Jim',
+                        'dealer': true,
+                        'host': false,
+                        'avatar': 'static/dog1.png',
+                        'bones': 100,
+                        'betting': 60
+                    },
+                    {
+                        'name': 'Whitey',
+                        'dealer': false,
+                        'host': false,
+                        'avatar': 'static/robot1.png',
+                        'bones': 200,
+                        'betting': 0
+                    },
+                    {
+                        'name': 'Dan',
+                        'dealer': false,
+                        'host': false,
+                        'avatar': 'static/dog2.png',
+                        'bones': 300,
+                        'betting': 0
+                    },
+                    {
+                        'name': 'Kyle',
+                        'dealer': false,
+                        'host': false,
+                        'avatar': 'static/dog3.png',
+                        'bones': 400,
+                        'betting': 0
+                    },
+                    {
+                        'name': 'Bob',
+                        'dealer': false,
+                        'host': false,
+                        'avatar': 'static/robot2.png',
+                        'bones': 100,
+                        'betting': 0
+                    },
+                    {
+                        'name': 'Cort',
+                        'dealer': false,
+                        'host': true,
+                        'avatar': 'static/robot3.png',
+                        'bones': 200,
+                        'betting': 0
+                    }
+                ],
+                tables: [],
+                messages: []
+            };
+        },
+        methods: {
+            createTable (tableName) {
+                // this.tables.push(new DealersChoiceTable(tableName));
+            },
+            // logout () {
+            //     this.loggedIn = false;
+            //     this.bus.$emit('logout-event');
+            // }
+        }
+    });
+
 
     export default {
         el: function () {
@@ -29,7 +115,7 @@
         },
         props: ['store'],
         components: {
-            Player
+            Player, DealersChoiceTable
         },
         data: function () {
             return {
