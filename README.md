@@ -2,14 +2,6 @@
 
 A poker game based on ['Frame'](https://github.com/jedireza/frame) by [Reza Akhavan](https://github.com/jedireza), using [Vue](https://vuejs.org/guide/) as a front end library.
 
-To work with the client side code cd into client and run
-
-	npm run dev
-
-## Frame Info
-
-Frame is a user system API for Node.js. Bring your own front-end.
-
 ### Technology
 
 __Primary goal:__ include as few dependencies as possible
@@ -91,54 +83,9 @@ This will start the app using [`nodemon`](https://github.com/remy/nodemon).
 `nodemon` will watch for changes and restart the app as needed.
 
 
-### Philosophy
+To work with the client side Vue code cd into client and run
 
- - Create a user system API
- - Don't include a front-end
- - Follow the [hapi coding conventions](http://hapijs.com/styleguide)
- - 100% test coverage
- - It's just JavaScript
-
-
-### Features
-
- - Login system with forgot password and reset password
- - Abusive login attempt detection
- - User roles for accounts and admins
- - Facilities for notes and status updates
- - Admin groups with shared permissions
- - Admin level permissions that override group permissions
-
-
-### Questions and contributing
-
-Any issues or questions (no matter how basic), open an issue. Please take the
-initiative to include basic debugging information like operating system
-and relevant version details such as:
-
-```bash
-$ npm version
-
-	 http_parser: '1.0',
-	 node: '0.10.29',
-	 v8: '3.14.5.9',
-	 ares: '1.9.0-DEV',
-	 uv: '0.10.27',
-	 zlib: '1.2.3',
-	 modules: '11',
-	 openssl: '1.0.1h',
-	 npm: '1.4.20',
-	 frame: '0.0.0' }
-```
-
-Contributions welcome. Your code should:
-
- - include 100% test coverage
- - follow the [hapi.js coding conventions](http://hapijs.com/styleguide)
-
-If you're changing something non-trivial, you may want to submit an issue
-first.
-
+	npm run dev
 
 ### Running tests
 
