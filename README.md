@@ -2,6 +2,10 @@
 
 A poker game based on ['Frame'](https://github.com/jedireza/frame) by [Reza Akhavan](https://github.com/jedireza), using [Vue](https://vuejs.org/guide/) as a front end library.
 
+To work with the client side code cd into client and run
+
+	npm run dev
+
 ## Frame Info
 
 Frame is a user system API for Node.js. Bring your own front-end.
