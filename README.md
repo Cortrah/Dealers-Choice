@@ -2,6 +2,8 @@
 
 A poker game client written in vue that uses ['Frame'](https://github.com/jedireza/frame) for it's server side api.
 
+The poker hand evaluator logic is in this ['repo'](https://github.com/Cortrah/katas/tree/master/2016-05/js)
+
 ### Technology
 
 Frame is built with the [hapi.js framework](https://github.com/hapijs/hapi) and
