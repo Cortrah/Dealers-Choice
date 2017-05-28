@@ -1,14 +1,10 @@
 # Dealers Choice
 
-A poker game based on ['Frame'](https://github.com/jedireza/frame) by [Reza Akhavan](https://github.com/jedireza), using [Vue](https://vuejs.org/guide/) as a front end library.
+A poker game client written in vue that uses ['Frame'](https://github.com/jedireza/frame) for it's server side api.
 
-## Frame Info
-
-Frame is a user system API for Node.js. Bring your own front-end.
+The poker hand evaluator logic is in this ['repo'](https://github.com/Cortrah/katas/tree/master/2016-05/js)
 
 ### Technology
-
-__Primary goal:__ include as few dependencies as possible
 
 Frame is built with the [hapi.js framework](https://github.com/hapijs/hapi) and
 [toolset](https://github.com/hapijs). We're using
@@ -17,7 +13,7 @@ also use [Nodemailer](https://github.com/andris9/Nodemailer) for email
 transport.
 
 
-### Live demo
+### Frame demo
 
 | endpoint                                                                 | username | password |
 |:------------------------------------------------------------------------ |:-------- |:-------- |
