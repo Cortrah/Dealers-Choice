@@ -70,6 +70,12 @@ $ npm run setup
 
 ### Running the app
 
+## Make sure mongo is running
+
+    mongod
+
+## then start the server
+
 ```bash
 $ npm start
 
@@ -87,7 +93,14 @@ This will start the app using [`nodemon`](https://github.com/remy/nodemon).
 `nodemon` will watch for changes and restart the app as needed.
 
 
-### Philosophy
+## Then go into the client directory to start the client
+
+    cd client
+    npm run dev
+
+
+
+### Frame Philosophy
 
  - Create a user system API
  - Don't include a front-end
