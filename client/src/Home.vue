@@ -1,16 +1,38 @@
 <template>
     <div id="home">
         <div id="header" class="pure-menu pure-menu-horizontal pure-menu-scrollable">
-            <a href="#" class="pure-menu-link pure-menu-heading" v-link="{ path: '/' }">Home</a>
+            <a href="#" class="pure-menu-link pure-menu-heading" v-link="{ path: '/' }">
+                Home
+            </a>
             <ul class="pure-menu-list">
                 <span v-if="!this.loggedIn">
-                    <li class="pure-menu-item"><a href="#" v-link="{ path: 'register' }" class="pure-menu-link">Register</a></li>
-                    <li class="pure-menu-item"><a href="#" v-link="{ path: 'login' }" class="pure-menu-link">Sign In</a></li>
+                    <li class="pure-menu-item">
+                        <a href="#" v-link="{ path: 'register' }" class="pure-menu-link">
+                            Register
+                        </a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a href="#" @click.prevent="gotoLogin()" class="pure-menu-link">
+                            Sign In
+                        </a>
+                    </li>
                 </span>
                 <span v-else>
-                    <li class="pure-menu-item"><a href="#" v-link="{ path: 'lobby' }" class="pure-menu-link">Lobby</a></li>
-                    <li class="pure-menu-item"><a href="#" v-link="{ path: 'profile' }" class="pure-menu-link">Profile</a></li>
-                    <li class="pure-menu-item" @click="this.LOGOUT_REQUEST()"><a href="#" class="pure-menu-link">Sign Out</a></li>
+                    <li class="pure-menu-item">
+                        <a href="#" @click.prevent="gotoLobby()" class="pure-menu-link">
+                            Lobby
+                        </a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a href="#" @click.prevent="gotoProfile()" class="pure-menu-link">
+                            Profile
+                        </a>
+                    </li>
+                    <li class="pure-menu-item" >
+                        <a href="#" @click="logoutRequest()" class="pure-menu-link">
+                            Sign Out
+                        </a>
+                    </li>
                 </span>
             </ul>
         </div>
@@ -34,16 +56,16 @@
             return {
                 bus: bus,
                 dogAvatars: [
-                    { id: '1', name: 'Cavalier', img: '../static/dog1.png' },
-                    { id: '2', name: 'Mini Schnauser', img: '../static/dog2.png' },
-                    { id: '3', name: 'Boston Terrier', img: '../static/dog3.png' },
-                    { id: '4', name: 'Border Collie', img: '../static/dog4.png' }
+                    {id: '1', name: 'Cavalier', img: '../static/dog1.png'},
+                    {id: '2', name: 'Mini Schnauser', img: '../static/dog2.png'},
+                    {id: '3', name: 'Boston Terrier', img: '../static/dog3.png'},
+                    {id: '4', name: 'Border Collie', img: '../static/dog4.png'}
                 ],
                 botAvatars: [
-                    { id: '1', name: 'Protobot', img: '../static/robot1.png' },
-                    { id: '2', name: 'Streambot', img: '../static/robot2.png' },
-                    { id: '3', name: 'Grammarbot', img: '../static/robot3.png' },
-                    { id: '4', name: 'Lambdabot', img: '../static/robot4.png' }
+                    {id: '1', name: 'Protobot', img: '../static/robot1.png'},
+                    {id: '2', name: 'Streambot', img: '../static/robot2.png'},
+                    {id: '3', name: 'Grammarbot', img: '../static/robot3.png'},
+                    {id: '4', name: 'Lambdabot', img: '../static/robot4.png'}
                 ],
                 players: [
                     {
@@ -100,11 +122,11 @@
             };
         },
         methods: {
-             createTable (tableName) {
-                 let t = new DealersChoiceTable();
-                 t.name = tableName;
-                 this.tables.push(t);
-             },
+            createTable (tableName) {
+                let t = new DealersChoiceTable();
+                t.name = tableName;
+                this.tables.push(t);
+            },
             // logout () {
             //     this.loggedIn = false;
             //     this.bus.$emit('logout-event');
@@ -115,13 +137,13 @@
     export default {
         name: 'Home',
         http: {
-          root: 'http://localhost:8080/'
+            root: 'http://localhost:8080/'
         },
         created () {
-            this.bus.$on('login-request', this.LOGIN_REQUEST);
-            this.bus.$on('login-result', this.LOGIN_RESULT);
-            this.bus.$on('logout-request', this.LOGOUT_REQUEST);
-            this.bus.$on('logout-result', this.LOGOUT_RESULT);
+            this.bus.$on('login-request', this.loginRequest);
+            this.bus.$on('login-result', this.loginResult);
+            this.bus.$on('logout-request', this.logoutRequest);
+            this.bus.$on('logout-result', this.logoutResult);
             this.bus.$on('get-accounts-request', this.getAccounts);
         },
         data () {
@@ -137,26 +159,26 @@
             Splash
         },
         methods: {
-            LOGIN_REQUEST: function (formData) {
+            loginRequest: function (formData) {
                 this.$http.post('/hapi/api/login', {
-                        username: formData.username,
-                        password: formData.password
-                    }).then(
-                        (response) => {
-                            this.loginInfo = response.body;
-                            this.store.bus.$emit('login-result');
-                        }, (error) => {
-                            console.log(error);
-                            // perhaps give a nice error message and customize login page
-                            // for now go to splash just to mark that a change has happened
-                            this.gotoSplash();
-                        });
+                    username: formData.username,
+                    password: formData.password
+                }).then(
+                    (response) => {
+                        this.loginInfo = response.body;
+                        this.store.bus.$emit('login-result');
+                    }, (error) => {
+                        console.log(error);
+                        // perhaps give a nice error message and customize login page
+                        // for now go to splash just to mark that a change has happened
+                        this.gotoSplash();
+                    });
             },
-            LOGIN_RESULT: function () {
+            loginResult: function () {
                 this.loggedIn = true;
                 this.gotoLobby();
             },
-            LOGOUT_REQUEST: function () {
+            logoutRequest: function () {
                 this.$http.delete('/hapi/api/logout', {
                     headers: {
                         username: this.loginInfo.session._id,
@@ -173,7 +195,7 @@
                         this.store.bus.$emit('logout-result');
                     });
             },
-            LOGOUT_RESULT: function () {
+            logoutResult: function () {
                 this.loginInfo = {};
                 this.loggedIn = false;
                 this.gotoSplash();
@@ -194,6 +216,12 @@
                         this.gotoSplash();
                     });
             },
+            gotoLogin: function () {
+                let elem = document.getElementById('stage');
+                this.destination = 'login';
+                window.TweenMax.to(elem, 0.5,
+                    {height: 350, onComplete: this.nav});
+            },
             gotoSplash: function () {
                 let elem = document.getElementById('stage');
                 this.destination = 'home';
@@ -205,7 +233,7 @@
                 let elem = document.getElementById('stage');
                 this.destination = 'profile';
                 window.TweenMax.to(elem, 0.5,
-                  {height: 400, width: 600, onComplete: this.nav});
+                    {height: 400, width: 600, onComplete: this.nav});
             },
             gotoLobby: function () {
                 // this.$children;
@@ -242,9 +270,9 @@
     }
 
     #header {
-        position:absolute;
-        top:0px;
-        left:0px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
         width: 100%;
         background-color: #f5f5f5;
     }
