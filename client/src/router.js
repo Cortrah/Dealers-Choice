@@ -14,10 +14,10 @@ import Host from './components/Host'
 import Card from './components/Card'
 import Catelog from './Catelog'
 
-Vue.use(VueRouter)
-Vue.use(VueResource)
+Vue.use(VueRouter);
+Vue.use(VueResource);
 
-let router = new VueRouter()
+let router = new VueRouter();
 
 router.map({
     '/': {
@@ -50,11 +50,11 @@ router.map({
     '/card': {
       component: Card
     }
-})
+});
 
 // redirect to splash if a route is unmatched
 router.redirect({
   '*': '/'
-})
+});
 
 export default router

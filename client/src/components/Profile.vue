@@ -3,10 +3,9 @@
         <form class="pure-form pure-form-stacked">
         <fieldset>
 
+            <h1>{{ title }}</h1>
             <div class="pure-g">
-                <div class="pure-u-1 pure-u-md-1-3">
-                    <h1>{{ title }}</h1>
-
+                <div class="pure-u-1 pure-u-md-1-2">
                     <label for="email">
                         Email
                     </label>
@@ -28,9 +27,14 @@
                            v-model="userName"
                            type="text"
                            placeholder="Mina"/>
+
+                    <button @click="gotoLobby()"
+                            class="pure-button pure-button-primary">
+                        Goto the Lobby
+                    </button>
                 </div>
 
-                <div class="pure-u-1 pure-u-md-1-3">
+                <div class="pure-u-1 pure-u-md-1-2">
                      <div v-if="!botChecked" >
                          <img class="avatar"
                               :src="selDog"/>
@@ -41,43 +45,37 @@
                              </option>
                          </select>
                      </div>
+                    <div v-if="botChecked">
+                        <img class="avatar"
+                             :src="selBot"/>
+                        <select v-model="selBot">
+                            <option v-for="bot in bots"
+                                    :value="bot.img">
+                                {{ bot.name }}
+                            </option>
+                        </select>
+                        <label for="ipAddress">
+                            ip:
+                        </label>
+                        <input id="ipAddress"
+                               type="text"
+                               placeholder="https://123.122.1.2"/>
+                        <label for="port">
+                            Port
+                        </label>
+                        <input id="port"
+                               type="text"
+                               placeholder=":8080"/>
+                    </div>
                     <div>
                         <label for="checkbox" >
                             <input id="checkbox"
                                    type="checkbox"
                                    v-model="botChecked">
-                            Or use a Bot
+                            Use a Bot
                         </label>
                     </div>
                 </div>
-
-                <div v-if="botChecked" class="pure-u-1 pure-u-md-1-3">
-                    <img class="avatar"
-                         :src="selBot"/>
-                    <select v-model="selBot">
-                        <option v-for="bot in bots"
-                                :value="bot.img">
-                            {{ bot.name }}
-                        </option>
-                    </select>
-                    <label for="ipAddress">
-                        Ip Address
-                    </label>
-                    <input id="ipAddress"
-                           type="text"
-                           placeholder="https://123.122.1.2"/>
-                    <label for="port">
-                        Port
-                    </label>
-                    <input id="port"
-                           type="text"
-                           placeholder=":8080"/>
-                </div>
-
-                <button @click="createAccount()"
-                        class="pure-button pure-button-primary">
-                    Goto the Lobby
-                </button>
             </div>
 
         </fieldset>
@@ -105,7 +103,7 @@
             toggleGogo: function (amt) {
                 this.displayGogo = !this.displayGogo;
             },
-            createAccount: function () {
+            gotoLobby: function () {
                 // this.$children;
                 let elem = document.getElementById('stage');
                 window.TweenMax.to(elem, 0.5,

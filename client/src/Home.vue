@@ -22,6 +22,7 @@
 </template>
 
 <script type="text/babel">
+
     import Splash from './components/Splash'
     import Vue from 'vue'
     import DealersChoiceTable from './components/DealersChoiceTable'
@@ -198,6 +199,13 @@
                 this.destination = 'home';
                 window.TweenMax.to(elem, 0.5,
                     {height: 300, onComplete: this.nav});
+            },
+            gotoProfile: function () {
+                // this.$children;
+                let elem = document.getElementById('stage');
+                this.destination = 'profile';
+                window.TweenMax.to(elem, 0.5,
+                  {height: 400, width: 600, onComplete: this.nav});
             },
             gotoLobby: function () {
                 // this.$children;
